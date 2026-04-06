@@ -3,14 +3,24 @@
   border-radius: var(--radius-lg);
   overflow: hidden;
   aspect-ratio: 4 / 3;
+  display: block;
+  width: 100%;
   cursor: pointer;
   border: 0.5px solid rgba(255,255,255,0.06);
-  transition: transform var(--transition-spring), box-shadow var(--transition-base);
+  transition: transform var(--transition-spring), box-shadow var(--transition-base), filter 0.3s ease;
 }
 
 .proj-card:hover,
-.proj-card.is-active {
+.proj-card.card--active {
   transform: scale(1.035);
+}
+
+.grid--focused .proj-card {
+  filter: saturate(0.15) brightness(0.7);
+}
+
+.grid--focused .proj-card.card--active {
+  filter: saturate(1) brightness(1);
 }
 
 .card-thumb {
@@ -19,13 +29,14 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(0.25) brightness(0.8);
+  filter: saturate(1) brightness(1);
   transition: filter var(--transition-base);
 }
 
-.proj-card:hover .card-thumb,
-.proj-card.is-active .card-thumb {
-  filter: saturate(1) brightness(1);
+.card-thumb--placeholder {
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg-elevated);
 }
 
 .card-scrim {
@@ -38,7 +49,7 @@
 }
 
 .proj-card:hover .card-scrim,
-.proj-card.is-active .card-scrim {
+.proj-card.card--active .card-scrim {
   opacity: 1;
 }
 
@@ -47,15 +58,10 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: var(--space-md) var(--space-md);
+  padding: var(--space-md);
   z-index: 2;
-  filter: saturate(0.2) brightness(1.1);
-  transition: filter var(--transition-base);
-}
-
-.proj-card:hover .card-text,
-.proj-card.is-active .card-text {
   filter: saturate(1) brightness(1);
+  transition: filter var(--transition-base);
 }
 
 .card-name {

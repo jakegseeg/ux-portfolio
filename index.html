@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      (function() {
+        const stored = localStorage.getItem('theme');
+        const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', stored || preferred);
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jake Seegmiller — UX Portfolio</title>
@@ -28,10 +35,12 @@
 
     <main aria-label="Main content">
       <section class="layout-hero" aria-labelledby="hero-title">
-        <h1 class="layout-hero__title" id="hero-title">Hi, I'm Jake.</h1>
-        <p class="layout-hero__subtitle">
-          I design experiences people don't have to think about.
-        </p>
+        <div class="layout-hero__content">
+          <h1 class="layout-hero__title" id="hero-title">Hi, I'm Jake.</h1>
+          <p class="layout-hero__subtitle">
+            I design experiences people don't have to think about.
+          </p>
+        </div>
         <p class="layout-hero__scroll">SCROLL TO EXPLORE</p>
       </section>
 
@@ -44,20 +53,36 @@
           </p>
           <div class="layout-works__grid" role="list" aria-label="Selected projects">
             <article class="proj-card" role="listitem" data-glow="#4A9EBF" data-hover-glow>
-              <h3 class="proj-card__title">Summit Journeys</h3>
-              <p class="proj-card__meta">Travel UX redesign</p>
+              <img class="card-thumb" src="/assets/images/summit-journeys.png" alt="Summit Journeys travel experience interface" />
+              <div class="card-scrim"></div>
+              <div class="card-text">
+                <p class="card-name">Summit Journeys</p>
+                <span class="card-tag">Designing an Adventure Platform for Young Adults</span>
+              </div>
             </article>
             <article class="proj-card" role="listitem" data-glow="#3A7BD5" data-hover-glow>
-              <h3 class="proj-card__title">Feit Electric</h3>
-              <p class="proj-card__meta">Connected home flows</p>
+              <img class="card-thumb" src="/assets/images/feit-electric.png" alt="Feit Electric connected home product interface" />
+              <div class="card-scrim"></div>
+              <div class="card-text">
+                <p class="card-name">Feit Electric</p>
+                <span class="card-tag">Reducing Friction in a Smart Home Experience</span>
+              </div>
             </article>
             <article class="proj-card" role="listitem" data-glow="#3A7BD5" data-hover-glow>
-              <h3 class="proj-card__title">AOL Mail</h3>
-              <p class="proj-card__meta">Inbox modernization</p>
+              <img class="card-thumb" src="/assets/images/aol-mail.png" alt="AOL Mail inbox modernization concept" />
+              <div class="card-scrim"></div>
+              <div class="card-text">
+                <p class="card-name">AOL Mail</p>
+                <span class="card-tag">Decluttering AOL Mail for Faster Orientation</span>
+              </div>
             </article>
             <article class="proj-card" role="listitem" data-glow="#5A5A7A" data-hover-glow>
-              <h3 class="proj-card__title">Human Interface Guidelines</h3>
-              <p class="proj-card__meta">Design language study</p>
+              <img class="card-thumb" src="/assets/images/hig.png" alt="Human Interface Guidelines design system study" />
+              <div class="card-scrim"></div>
+              <div class="card-text">
+                <p class="card-name">Human Interface Guidelines</p>
+                <span class="card-tag">In-depth personal findings surrounding Apple’s Design System</span>
+              </div>
             </article>
           </div>
         </div>

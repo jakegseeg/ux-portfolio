@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var THEME_KEY = "ux-portfolio-theme";
+  var THEME_KEY = "theme";
   var root = document.documentElement;
 
   function getStoredTheme() {
