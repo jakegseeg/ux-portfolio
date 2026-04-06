@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio — Your Name</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/tokens.css" />
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/components.css" />
+    <link rel="stylesheet" href="styles/layout.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="layout-header" role="banner">
+      <a class="layout-header__brand" href="index.html">Your Name</a>
+      <div class="layout-header__cluster">
+        <button
+          type="button"
+          class="layout-nav-toggle"
+          id="nav-toggle"
+          aria-controls="site-nav"
+          aria-expanded="false"
+          aria-label="Open menu"
+        >
+          Menu
+        </button>
+        <nav
+          class="layout-nav"
+          id="site-nav"
+          aria-label="Primary"
+          data-open="false"
+        >
+          <ul class="layout-nav__list">
+            <li>
+              <a class="layout-nav__link" href="#work">Work</a>
+            </li>
+            <li>
+              <a class="layout-nav__link" href="#about">About</a>
+            </li>
+            <li>
+              <a class="layout-nav__link" href="mailto:hello@example.com">Contact</a>
+            </li>
+          </ul>
+        </nav>
+        <button
+          type="button"
+          class="theme-toggle"
+          id="theme-toggle"
+          aria-pressed="false"
+          aria-label="Switch to dark theme"
+        >
+          Theme
+        </button>
+      </div>
+    </header>
+
+    <main class="layout-main layout-shell" id="main">
+      <section class="layout-section layout-hero" id="top" aria-labelledby="hero-heading">
+        <h1 class="layout-hero__title" id="hero-heading">Your Name</h1>
+        <p class="layout-hero__lede">
+          UX design — research, systems, and craft. Replace this line with your positioning statement.
+        </p>
+        <a class="layout-hero__cta" href="#work">View selected work</a>
+      </section>
+
+      <section class="layout-section layout-work" id="work" aria-labelledby="work-heading">
+        <h2 class="layout-section__title" id="work-heading">Selected work</h2>
+        <div
+          class="layout-project-grid"
+          role="list"
+          aria-label="Project grid — two columns on larger screens"
+        >
+          <a
+            class="layout-project-grid__cell"
+            role="listitem"
+            href="pages/case-study.html"
+            data-hover-glow
+          >
+            <h3 class="layout-project-grid__cell-title">Project one</h3>
+            <p class="layout-project-grid__cell-meta">Product · 2025</p>
+          </a>
+          <a
+            class="layout-project-grid__cell"
+            role="listitem"
+            href="pages/case-study.html"
+            data-hover-glow
+          >
+            <h3 class="layout-project-grid__cell-title">Project two</h3>
+            <p class="layout-project-grid__cell-meta">Mobile · 2024</p>
+          </a>
+          <a
+            class="layout-project-grid__cell"
+            role="listitem"
+            href="pages/case-study.html"
+            data-hover-glow
+          >
+            <h3 class="layout-project-grid__cell-title">Project three</h3>
+            <p class="layout-project-grid__cell-meta">Systems · 2024</p>
+          </a>
+          <a
+            class="layout-project-grid__cell"
+            role="listitem"
+            href="pages/case-study.html"
+            data-hover-glow
+          >
+            <h3 class="layout-project-grid__cell-title">Project four</h3>
+            <p class="layout-project-grid__cell-meta">Research · 2023</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="layout-section layout-about" id="about" aria-labelledby="about-heading">
+        <h2 class="layout-section__title" id="about-heading">About</h2>
+        <p class="layout-hero__lede">
+          Short bio placeholder — who you are, what you focus on in UX, and how to reach you.
+        </p>
+      </section>
+    </main>
+
+    <footer class="layout-footer" role="contentinfo">
+      <p class="layout-footer__note">© <span id="year"></span> Your Name</p>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script src="scripts/hover.js"></script>
+  </body>
+</html>
