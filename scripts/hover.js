@@ -1,43 +1,22 @@
-(function () {
-  "use strict";
+document.querySelectorAll('.proj-card').forEach(card => {
+  const color = card.dataset.glow;
+  let touchTimer;
 
-  /**
-   * Pointer-driven glow: updates --glow-x / --glow-y on project grid cells
-   * so layout.css radial-gradient tracks the cursor. Uses percent strings
-   * compatible with CSS custom properties.
-   */
-  function clampPct(n) {
-    if (n < 0) return 0;
-    if (n > 100) return 100;
-    return n;
-  }
+  card.addEventListener('mouseenter', () => {
+    card.style.boxShadow = `0 8px 36px -4px ${color}70`;
+  });
 
-  function initHoverGlow() {
-    var cells = document.querySelectorAll("[data-hover-glow]");
-    if (!cells.length) return;
+  card.addEventListener('mouseleave', () => {
+    card.style.boxShadow = '';
+  });
 
-    cells.forEach(function (cell) {
-      cell.style.setProperty("--glow-x", "50%");
-      cell.style.setProperty("--glow-y", "50%");
-
-      cell.addEventListener("mousemove", function (e) {
-        var rect = cell.getBoundingClientRect();
-        var x = clampPct(((e.clientX - rect.left) / rect.width) * 100);
-        var y = clampPct(((e.clientY - rect.top) / rect.height) * 100);
-        cell.style.setProperty("--glow-x", x + "%");
-        cell.style.setProperty("--glow-y", y + "%");
-      });
-
-      cell.addEventListener("mouseleave", function () {
-        cell.style.setProperty("--glow-x", "50%");
-        cell.style.setProperty("--glow-y", "50%");
-      });
-    });
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initHoverGlow);
-  } else {
-    initHoverGlow();
-  }
-})();
+  card.addEventListener('touchstart', () => {
+    card.classList.add('is-active');
+    card.style.boxShadow = `0 8px 36px -4px ${color}70`;
+    clearTimeout(touchTimer);
+    touchTimer = setTimeout(() => {
+      card.classList.remove('is-active');
+      card.style.boxShadow = '';
+    }, 1200);
+  }, { passive: true });
+});
