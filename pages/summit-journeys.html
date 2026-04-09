@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      (function () {
+        const stored = localStorage.getItem("theme");
+        const preferred = window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+        document.documentElement.setAttribute("data-theme", stored || preferred);
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Summit Journeys — Case study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/components.css" />
+    <link rel="stylesheet" href="../styles/layout.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="layout-nav" aria-label="Primary navigation">
+        <a class="layout-nav__brand" href="../index.html">Jake Seegmiller — UX Designer</a>
+        <div class="layout-nav__links">
+          <a class="layout-nav__link" href="../index.html#works">Case Studies</a>
+          <a class="layout-nav__link" href="../index.html#about">About Me</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="layout-case-study-main" id="main" aria-label="Summit Journeys case study">
+      <a class="layout-case-study__back" href="../index.html#works">← Back to selected works</a>
+      <figure class="layout-case-study__media">
+        <img
+          src="../assets/images/case study -Summit.png"
+          alt="Summit Journeys case study — designing an adventure platform for young adults"
+        />
+      </figure>
+    </main>
+
+    <script src="../scripts/main.js"></script>
+  </body>
+</html>
