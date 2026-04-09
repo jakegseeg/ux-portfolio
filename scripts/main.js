@@ -111,8 +111,105 @@
     }
   }
 
+  function initCursorGlow() {
+    var supportsPointerTracking =
+      window.matchMedia &&
+      window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    var prefersReducedMotion =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!supportsPointerTracking || prefersReducedMotion) return;
+
+    var pill = document.createElement("div");
+    var pillLabel = document.createElement("span");
+    var rafId = null;
+    var targetX = window.innerWidth / 2;
+    var targetY = window.innerHeight / 2;
+    var currentX = targetX;
+    var currentY = targetY;
+    var lerpFactor = 0.12;
+    var isActive = false;
+    var hoveringCard = false;
+    var pillWidth = 168;
+    var pillHeight = 56;
+
+    pill.className = "cursor-pill";
+    pill.setAttribute("aria-hidden", "true");
+    pillLabel.className = "cursor-pill__label";
+    pillLabel.textContent = "View Case Study";
+    pill.appendChild(pillLabel);
+    document.body.appendChild(pill);
+
+    function syncPillSize() {
+      pillWidth = pill.offsetWidth || 168;
+      pillHeight = pill.offsetHeight || 56;
+    }
+
+    function setAccent(card) {
+      var accent = card && card.dataset ? card.dataset.glow : "";
+      pill.style.setProperty(
+        "--cursor-accent",
+        accent ? accent + "66" : "rgba(255, 0, 204, 0.3)"
+      );
+    }
+
+    function render() {
+      currentX += (targetX - currentX) * lerpFactor;
+      currentY += (targetY - currentY) * lerpFactor;
+      pill.style.left = currentX - pillWidth / 2 + "px";
+      pill.style.top = currentY - pillHeight / 2 + "px";
+
+      if (!isActive) {
+        rafId = null;
+        return;
+      }
+
+      rafId = window.requestAnimationFrame(render);
+    }
+
+    document.addEventListener("pointermove", function (event) {
+      targetX = event.clientX;
+      targetY = event.clientY;
+
+      if (event.pointerType !== "mouse" && event.pointerType !== "pen") {
+        return;
+      }
+
+      isActive = true;
+      var card = event.target.closest(".proj-card");
+      hoveringCard = Boolean(card);
+      document.body.classList.toggle("cursor-card-hover", hoveringCard);
+
+      if (hoveringCard) {
+        setAccent(card);
+        syncPillSize();
+      }
+
+      if (rafId === null) {
+        rafId = window.requestAnimationFrame(render);
+      }
+    });
+
+    document.addEventListener("pointerleave", function () {
+      isActive = false;
+      hoveringCard = false;
+      document.body.classList.remove("cursor-card-hover");
+    });
+
+    window.addEventListener("blur", function () {
+      isActive = false;
+      hoveringCard = false;
+      document.body.classList.remove("cursor-card-hover");
+    });
+
+    window.addEventListener("resize", syncPillSize);
+    syncPillSize();
+  }
+
   initTheme();
   bindThemeToggle();
   bindNav();
   setYear();
+  initCursorGlow();
 })();
