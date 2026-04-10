@@ -136,7 +136,7 @@ img {
     background-size 0.6s ease;
   background-repeat: no-repeat;
   background-position: 0% 50%;
-  background-size: 100% 100%;
+  background-size: 280% 100%;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -157,13 +157,13 @@ img {
   .layout-footer__icons a:hover,
   .layout-footer__top:hover {
     background-image: linear-gradient(120deg, #ff00cc 0%, #00ffcc 46%, #3333ff 74%, #ff00cc 100%);
-    background-size: 220% 100%;
-    background-position: 100% 50%;
+    background-size: 280% 100%;
+    background-position: 0% 50%;
     color: transparent;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
-    animation: text-hover-gradient 2.6s linear infinite;
+    animation: text-hover-gradient 6s linear infinite;
   }
 }
 
@@ -173,7 +173,7 @@ img {
   }
 
   to {
-    background-position: 220% 50%;
+    background-position: 140% 50%;
   }
 }
 
