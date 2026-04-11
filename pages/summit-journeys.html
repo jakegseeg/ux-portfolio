@@ -35,14 +35,72 @@
       </nav>
     </header>
 
-    <main class="layout-case-study-main" id="main" aria-label="Summit Journeys case study">
+    <main class="layout-case-study-main layout-case-study-main--aol" aria-label="Summit Journeys case study">
+      <nav class="aol-case-nav" aria-label="Summit Journeys case study sections">
+        <div class="aol-case-nav__rail" aria-hidden="true">
+          <span class="aol-case-nav__progress"></span>
+        </div>
+        <a class="aol-case-nav__item" href="#summit-summary" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Summary</span>
+        </a>
+        <a class="aol-case-nav__item" href="#summit-problem" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">The Problem</span>
+        </a>
+        <a class="aol-case-nav__item" href="#summit-journey" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">User Journey</span>
+        </a>
+        <a class="aol-case-nav__item" href="#summit-solutions" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Current Solutions</span>
+        </a>
+        <a class="aol-case-nav__item" href="#summit-iterations" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Iterations &amp; Design</span>
+        </a>
+        <a class="aol-case-nav__item" href="#summit-testing" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Usability Testing</span>
+        </a>
+        <a class="aol-case-nav__item" href="#summit-insights" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Insights</span>
+        </a>
+        <a class="aol-case-nav__item" href="#summit-takeaways" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Takeaways &amp; Improvements</span>
+        </a>
+      </nav>
+
       <a class="layout-case-study__back" href="../index.html#works">← Back to selected works</a>
-      <figure class="layout-case-study__media">
-        <img
-          src="../assets/images/case study -Summit.png"
-          alt="Summit Journeys case study — designing an adventure platform for young adults"
-        />
-      </figure>
+
+      <article class="aol-case-study summit-case-study">
+        <div class="summit-case-study__canvas">
+          <span class="summit-case-study__anchor" id="summit-summary" style="top: 0%;"></span>
+          <span class="summit-case-study__anchor" id="summit-problem" style="top: 12.5%;"></span>
+          <span class="summit-case-study__anchor" id="summit-journey" style="top: 19.5%;"></span>
+          <span class="summit-case-study__anchor" id="summit-solutions" style="top: 30.5%;"></span>
+          <span class="summit-case-study__anchor" id="summit-iterations" style="top: 43.5%;"></span>
+          <span class="summit-case-study__anchor" id="summit-testing" style="top: 79.5%;"></span>
+          <span class="summit-case-study__anchor" id="summit-insights" style="top: 86.6%;"></span>
+          <span class="summit-case-study__anchor" id="summit-takeaways" style="top: 93.4%;"></span>
+
+          <a
+            class="aol-case-study__media summit-case-study__image"
+            href="../assets/images/summit-case/summit-skeleton.png"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open Summit Journeys case study image"
+          >
+            <img
+              src="../assets/images/summit-case/summit-skeleton.png"
+              alt="Summit Journeys case study layout covering summary, problem, journey, solutions, iterations, testing, insights, and takeaways"
+            />
+          </a>
+        </div>
+      </article>
     </main>
 
     <script src="../scripts/main.js"></script>

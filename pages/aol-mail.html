@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      (function () {
+        const stored = localStorage.getItem("theme");
+        const preferred = window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+        document.documentElement.setAttribute("data-theme", stored || preferred);
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AOL Mail — Case study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/components.css" />
+    <link rel="stylesheet" href="../styles/layout.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="layout-nav" aria-label="Primary navigation">
+        <a class="layout-nav__brand" href="../index.html">Jake Seegmiller — UX Designer</a>
+        <div class="layout-nav__links">
+          <a class="layout-nav__link" href="../index.html#works">Case Studies</a>
+          <a class="layout-nav__link" href="../index.html#about">About Me</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="layout-case-study-main layout-case-study-main--aol" aria-label="AOL Mail case study">
+      <nav class="aol-case-nav" aria-label="AOL case study sections">
+        <div class="aol-case-nav__rail" aria-hidden="true">
+          <span class="aol-case-nav__progress"></span>
+        </div>
+        <a class="aol-case-nav__item" href="#aol-overview" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Overview</span>
+        </a>
+        <a class="aol-case-nav__item" href="#aol-original" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Original</span>
+        </a>
+        <a class="aol-case-nav__item" href="#aol-drawing-board" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Drawing Board</span>
+        </a>
+        <a class="aol-case-nav__item" href="#aol-wireframe" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Wireframe Edits</span>
+        </a>
+        <a class="aol-case-nav__item" href="#aol-final" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Final Details</span>
+        </a>
+      </nav>
+
+      <a class="layout-case-study__back" href="../index.html#works">← Back to selected works</a>
+
+      <article class="aol-case-study">
+        <header class="aol-case-study__hero" id="aol-overview">
+          <p class="aol-case-study__eyebrow">AOL Mail</p>
+          <h1 class="aol-case-study__title">Decluttering AOL Mail for Faster Orientation</h1>
+          <p class="aol-case-study__intro">
+            This project is a light UX/UI case study examining the usability and visual
+            hierarchy of AOL Mail&apos;s inbox experience. The goal was to identify areas
+            where interface complexity and layout decisions create friction, particularly
+            for AOL&apos;s predominantly older user base, and explore design adjustments
+            that improve clarity, reduce cognitive load, and better align the interface
+            with user intent. This was an independent, observational redesign conducted as
+            part of an academic project and is not affiliated with AOL.
+          </p>
+        </header>
+
+        <section class="aol-case-study__section" id="aol-original" aria-labelledby="aol-original-title">
+          <h2 class="aol-case-study__section-title" id="aol-original-title">
+            Original - AOL&apos;s Current Experience
+          </h2>
+          <a
+            class="aol-case-study__media aol-case-study__media--wide"
+            href="../assets/images/aol-case/original-img.png"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open original AOL Mail image"
+          >
+            <img
+              src="../assets/images/aol-case/original-img.png"
+              alt="Original AOL Mail inbox interface showing the current experience"
+            />
+          </a>
+          <p class="aol-case-study__copy">
+            The original AOL Mail page was over-cluttered in many ways from distracting
+            advertisements to an overwhelming navigation. I wanted to improve three main
+            aspects of this overall experience: the ad placement, the side navigation, and
+            the top selection menu.
+          </p>
+        </section>
+
+        <section class="aol-case-study__section" id="aol-drawing-board" aria-labelledby="aol-drawing-board-title">
+          <h2 class="aol-case-study__section-title" id="aol-drawing-board-title">
+            The Drawing Board
+          </h2>
+          <div class="aol-case-study__grid">
+            <a
+              class="aol-case-study__media aol-case-study__media--tall"
+              href="../assets/images/aol-case/drawingboard-img1.png"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open AOL Mail drawing board sketch 1"
+            >
+              <img
+                src="../assets/images/aol-case/drawingboard-img1.png"
+                alt="AOL Mail drawing board sketch 1"
+              />
+            </a>
+            <a
+              class="aol-case-study__media aol-case-study__media--tall"
+              href="../assets/images/aol-case/drawingboard-img2.png"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open AOL Mail drawing board sketch 2"
+            >
+              <img
+                src="../assets/images/aol-case/drawingboard-img2.png"
+                alt="AOL Mail drawing board sketch 2"
+              />
+            </a>
+            <a
+              class="aol-case-study__media aol-case-study__media--tall"
+              href="../assets/images/aol-case/drawingboard-img3.png"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open AOL Mail drawing board sketch 3"
+            >
+              <img
+                src="../assets/images/aol-case/drawingboard-img3.png"
+                alt="AOL Mail drawing board sketch 3"
+              />
+            </a>
+            <a
+              class="aol-case-study__media aol-case-study__media--tall"
+              href="../assets/images/aol-case/drawingboard-img4.png"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open AOL Mail drawing board sketch 4"
+            >
+              <img
+                src="../assets/images/aol-case/drawingboard-img4.png"
+                alt="AOL Mail drawing board sketch 4"
+              />
+            </a>
+            <a
+              class="aol-case-study__media aol-case-study__media--tall"
+              href="../assets/images/aol-case/drawingboard-img5.png"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open AOL Mail drawing board sketch 5"
+            >
+              <img
+                src="../assets/images/aol-case/drawingboard-img5.png"
+                alt="AOL Mail drawing board sketch 5"
+              />
+            </a>
+            <a
+              class="aol-case-study__media aol-case-study__media--tall"
+              href="../assets/images/aol-case/drawingboard-img6.png"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open AOL Mail drawing board sketch 6"
+            >
+              <img
+                src="../assets/images/aol-case/drawingboard-img6.png"
+                alt="AOL Mail drawing board sketch 6"
+              />
+            </a>
+          </div>
+          <p class="aol-case-study__copy">
+            These are a few simple sketches I drew up in the ideation process, addressing
+            the main problems addressed earlier.
+          </p>
+        </section>
+
+        <section class="aol-case-study__section" id="aol-wireframe" aria-labelledby="aol-wireframe-title">
+          <h2 class="aol-case-study__section-title" id="aol-wireframe-title">
+            My Wireframe Edits
+          </h2>
+          <a
+            class="aol-case-study__media aol-case-study__media--wireframe"
+            href="../assets/images/aol-case/wireframe-img.png"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open AOL Mail wireframe image"
+          >
+            <img
+              src="../assets/images/aol-case/wireframe-img.png"
+              alt="AOL Mail redesign wireframes for desktop and mobile"
+            />
+          </a>
+          <p class="aol-case-study__copy">
+            For this school project, I used Figma to redesign key areas of the AOL Mail
+            interface with a focus on reducing visual noise, improving hierarchy, and
+            simplifying everyday inbox interactions.
+          </p>
+          <ul class="aol-case-study__list">
+            <li>
+              <strong>Ad Placement &amp; Visual Hierarchy:</strong> Integrated ads directly
+              into the email list instead of dedicating a large, constantly changing ad
+              area, reducing visual noise and keeping focus on core inbox tasks.
+            </li>
+            <li>
+              <strong>Simplified Side Navigation:</strong> Reduced cognitive load by
+              prioritizing essential actions and grouping secondary options under a
+              &ldquo;More&rdquo; dropdown, improving clarity and scannability.
+            </li>
+            <li>
+              <strong>Contextual Actions on Demand:</strong> Replaced permanently disabled
+              actions such as Delete and Move with a contextual pop-up menu that appears
+              only when emails are selected, aligning controls with user intent and
+              minimizing confusion for less tech-savvy users.
+            </li>
+          </ul>
+        </section>
+
+        <section class="aol-case-study__section" id="aol-final" aria-labelledby="aol-final-title">
+          <h2 class="aol-case-study__section-title" id="aol-final-title">Final Details</h2>
+          <a
+            class="aol-case-study__media aol-case-study__media--wide"
+            href="../assets/images/aol-case/finaldetails-img.png"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open final AOL Mail details image"
+          >
+            <img
+              src="../assets/images/aol-case/finaldetails-img.png"
+              alt="Final AOL Mail redesign details shown in desktop and mobile views"
+            />
+          </a>
+          <p class="aol-case-study__copy">
+            After adding in the color, a demo of what the pop-up menu would look like, and
+            also a mobile rendition, I was able to see the improvements that my edits made
+            to the overall interface. These changes prioritize clarity, reduce cognitive
+            load, and better support the needs of AOL Mail&apos;s predominantly older user
+            base without altering core functionality.
+          </p>
+        </section>
+      </article>
+    </main>
+
+    <script src="../scripts/main.js"></script>
+  </body>
+</html>

@@ -254,8 +254,328 @@ main > section:first-of-type:not(.layout-hero) {
   border-radius: var(--radius-md);
 }
 
+.layout-case-study-main--aol {
+  color: var(--color-text-primary);
+  position: relative;
+  padding-left: clamp(140px, 12vw, 220px);
+  padding-right: clamp(56px, 6vw, 104px);
+}
+
+.aol-case-study {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.aol-case-nav {
+  --case-nav-progress: 0%;
+  position: fixed;
+  top: 50%;
+  left: clamp(18px, 2.2vw, 30px);
+  transform: translateY(-50%);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 150px;
+}
+
+.aol-case-nav__rail {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 5px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.aol-case-nav__progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--case-nav-progress);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.38));
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.14);
+  transition: height 0.18s ease-out;
+}
+
+.aol-case-nav__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 18px;
+  color: rgba(255, 255, 255, 0.46);
+}
+
+.aol-case-nav__dot {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 12px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.aol-case-nav__dot::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  transform: scale(0);
+  transition: transform 0.2s ease;
+}
+
+.aol-case-nav__label {
+  font-size: 12px;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  transform-origin: left center;
+  transition: transform 0.2s ease, color 0.2s ease, font-weight 0.2s ease, letter-spacing 0.2s ease;
+}
+
+.aol-case-nav__item:hover .aol-case-nav__label,
+.aol-case-nav__item:focus-visible .aol-case-nav__label,
+.aol-case-nav__item.is-active .aol-case-nav__label {
+  color: rgba(255, 255, 255, 0.98);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0;
+  transform: scale(1.035);
+}
+
+.aol-case-nav__item:hover .aol-case-nav__dot,
+.aol-case-nav__item:focus-visible .aol-case-nav__dot,
+.aol-case-nav__item.is-active .aol-case-nav__dot,
+.aol-case-nav__item.is-complete .aol-case-nav__dot {
+  border-color: rgba(255, 255, 255, 0.66);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.12);
+}
+
+.aol-case-nav__item.is-active .aol-case-nav__dot::after,
+.aol-case-nav__item.is-complete .aol-case-nav__dot::after {
+  transform: scale(1);
+}
+
+.aol-case-nav__item:focus-visible {
+  outline: none;
+}
+
+.aol-case-study__hero {
+  max-width: 1120px;
+}
+
+.aol-case-study__eyebrow {
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: var(--weight-medium);
+  line-height: 1;
+  color: var(--color-text-primary);
+}
+
+.aol-case-study__title {
+  margin-top: var(--space-md);
+  font-size: clamp(2.2rem, 4.6vw, 4rem);
+  font-weight: var(--weight-medium);
+  line-height: 1.06;
+  color: rgba(255, 255, 255, 0.56);
+}
+
+.aol-case-study__intro,
+.aol-case-study__copy,
+.aol-case-study__list {
+  max-width: 1120px;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  line-height: 1.34;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.aol-case-study__intro {
+  margin-top: calc(var(--space-xl) + var(--space-sm));
+}
+
+.aol-case-study__section {
+  margin-top: calc(var(--space-2xl) + var(--space-xl));
+}
+
+.aol-case-study__section-title {
+  margin-bottom: var(--space-xl);
+  font-size: clamp(1.45rem, 2vw, 2rem);
+  font-weight: var(--weight-medium);
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.aol-case-study__panel {
+  width: 100%;
+  border-radius: 2px;
+  background: #d9d9d9;
+}
+
+.aol-case-study__media {
+  margin: 0;
+  width: 100%;
+  overflow: visible;
+  border-radius: 2px;
+  background: transparent;
+  border: 0;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  transition: transform 0.24s ease, box-shadow 0.24s ease;
+}
+
+.aol-case-study__media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center top;
+  border-radius: 2px;
+}
+
+.aol-case-study__panel--wide {
+  aspect-ratio: 16 / 9;
+  min-height: 320px;
+}
+
+.aol-case-study__panel--tall {
+  aspect-ratio: 0.82 / 1;
+  min-height: 240px;
+}
+
+.aol-case-study__media--wide {
+  aspect-ratio: 16 / 9;
+}
+
+.aol-case-study__media--wireframe {
+  aspect-ratio: auto;
+}
+
+.aol-case-study__media--wireframe img {
+  height: auto;
+}
+
+.aol-case-study__media--tall {
+  aspect-ratio: 0.82 / 1;
+}
+
+.aol-case-study__media:hover,
+.aol-case-study__media:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 52px rgba(0, 0, 0, 0.34);
+}
+
+.aol-case-study__media:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.28);
+  outline-offset: 6px;
+}
+
+.aol-case-study__copy {
+  margin-top: var(--space-lg);
+}
+
+.aol-case-study__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-lg);
+}
+
+.aol-case-study__list {
+  margin-top: var(--space-md);
+  padding-left: 1.5rem;
+}
+
+.aol-case-study__list li + li {
+  margin-top: var(--space-sm);
+}
+
+.summit-case-study {
+  max-width: 1100px;
+}
+
+.summit-case-study__canvas {
+  position: relative;
+}
+
+.summit-case-study__image {
+  display: block;
+  box-shadow: none;
+  border-radius: 0;
+  background: transparent;
+  transform: none;
+}
+
+.summit-case-study__image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+}
+
+.summit-case-study__image:hover,
+.summit-case-study__image:focus-visible {
+  transform: none;
+  box-shadow: none;
+}
+
+.summit-case-study__image:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.28);
+  outline-offset: 6px;
+}
+
+.summit-case-study__anchor {
+  position: absolute;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  transform: translateY(calc(-1 * (var(--space-3xl) + 20px)));
+  pointer-events: none;
+}
+
 @media (min-width: 768px) {
   .layout-hero__content h1 {
     font-size: var(--text-3xl);
+  }
+}
+
+@media (max-width: 900px) {
+  .layout-case-study-main--aol {
+    padding:
+      calc(var(--space-3xl) + var(--space-lg))
+      var(--space-lg)
+      var(--space-2xl);
+  }
+
+  .aol-case-nav {
+    display: none;
+  }
+
+  .aol-case-study__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .aol-case-study__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .aol-case-study__panel--wide {
+    min-height: 220px;
+  }
+
+  .aol-case-study__intro,
+  .aol-case-study__copy,
+  .aol-case-study__list {
+    font-size: 1rem;
+    line-height: 1.45;
   }
 }

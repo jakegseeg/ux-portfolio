@@ -207,9 +207,90 @@
     syncPillSize();
   }
 
+  function initCaseStudyNav() {
+    var nav = document.querySelector(".aol-case-nav");
+    if (!nav) return;
+
+    var links = Array.from(nav.querySelectorAll("[data-case-nav-link]"));
+    if (!links.length) return;
+
+    var progressEl = nav.querySelector(".aol-case-nav__progress");
+    var reducedMotion =
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function getTargets() {
+      return links
+        .map(function (link) {
+          var id = link.getAttribute("href");
+          var target = id ? document.querySelector(id) : null;
+          if (!target) return null;
+          return {
+            link: link,
+            target: target
+          };
+        })
+        .filter(Boolean);
+    }
+
+    function updateNav() {
+      var targets = getTargets();
+      if (!targets.length) return;
+
+      var viewportHeight = window.innerHeight;
+      var currentY = window.scrollY + viewportHeight * 0.38;
+      var triggerPoints = targets.map(function (item) {
+        return Math.max(0, item.target.offsetTop - viewportHeight * 0.38);
+      });
+      var start = triggerPoints[0];
+      var end = triggerPoints[triggerPoints.length - 1];
+      var range = Math.max(1, end - start);
+      var progress = Math.max(0, Math.min(1, (window.scrollY - start) / range));
+      var activeIndex = 0;
+
+      triggerPoints.forEach(function (point, index) {
+        if (currentY >= point) {
+          activeIndex = index;
+        }
+      });
+
+      targets.forEach(function (item, index) {
+        var isComplete = index < activeIndex;
+        var isActive = index === activeIndex;
+        item.link.classList.toggle("is-complete", isComplete);
+        item.link.classList.toggle("is-active", isActive);
+        item.link.setAttribute("aria-current", isActive ? "true" : "false");
+      });
+
+      if (progressEl) {
+        progressEl.style.height = progress * 100 + "%";
+      }
+    }
+
+    links.forEach(function (link) {
+      link.addEventListener("click", function () {
+        links.forEach(function (item) {
+          item.classList.remove("is-active");
+        });
+        link.classList.add("is-active");
+
+        if (reducedMotion) {
+          updateNav();
+        } else {
+          window.requestAnimationFrame(updateNav);
+        }
+      });
+    });
+
+    window.addEventListener("scroll", updateNav, { passive: true });
+    window.addEventListener("resize", updateNav);
+    updateNav();
+  }
+
   initTheme();
   bindThemeToggle();
   bindNav();
   setYear();
   initCursorGlow();
+  initCaseStudyNav();
 })();

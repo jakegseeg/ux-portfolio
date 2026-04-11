@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      (function () {
+        const stored = localStorage.getItem("theme");
+        const preferred = window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+        document.documentElement.setAttribute("data-theme", stored || preferred);
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feit Electric — Case study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/components.css" />
+    <link rel="stylesheet" href="../styles/layout.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="layout-nav" aria-label="Primary navigation">
+        <a class="layout-nav__brand" href="../index.html">Jake Seegmiller — UX Designer</a>
+        <div class="layout-nav__links">
+          <a class="layout-nav__link" href="../index.html#works">Case Studies</a>
+          <a class="layout-nav__link" href="../index.html#about">About Me</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="layout-case-study-main layout-case-study-main--aol" aria-label="Feit Electric case study">
+      <nav class="aol-case-nav" aria-label="Feit Electric case study sections">
+        <div class="aol-case-nav__rail" aria-hidden="true">
+          <span class="aol-case-nav__progress"></span>
+        </div>
+        <a class="aol-case-nav__item" href="#feit-overview" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Overview</span>
+        </a>
+        <a class="aol-case-nav__item" href="#feit-original" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Original</span>
+        </a>
+        <a class="aol-case-nav__item" href="#feit-edits" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Recommended Edits</span>
+        </a>
+        <a class="aol-case-nav__item" href="#feit-final-details" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Final Details</span>
+        </a>
+        <a class="aol-case-nav__item" href="#feit-final-thoughts" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Final Thoughts</span>
+        </a>
+      </nav>
+
+      <a class="layout-case-study__back" href="../index.html#works">← Back to selected works</a>
+
+      <article class="aol-case-study feit-case-study">
+        <header class="aol-case-study__hero" id="feit-overview">
+          <p class="aol-case-study__eyebrow">Feit Electric</p>
+          <h1 class="aol-case-study__title">Reducing Friction in a Smart Home Experience</h1>
+          <p class="aol-case-study__intro">
+            This academic UX/UI case study examines the Feit Electric mobile app, which
+            allows users to control smart lighting across rooms and locations. The project
+            focuses on reducing interface complexity, consolidating navigation, and
+            improving discoverability so users can adjust lighting quickly and intuitively
+            without navigating through unnecessary screens.
+          </p>
+        </header>
+
+        <section class="aol-case-study__section" id="feit-original" aria-labelledby="feit-original-title">
+          <h2 class="aol-case-study__section-title" id="feit-original-title">
+            Original - Feit&apos;s Current Experience
+          </h2>
+          <div class="aol-case-study__grid">
+            <a
+              class="aol-case-study__media aol-case-study__media--tall"
+              href="../assets/images/feit-case/original-1.png"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open Feit original interface image 1"
+            >
+              <img
+                src="../assets/images/feit-case/original-1.png"
+                alt="Feit Electric original interface screen 1"
+              />
+            </a>
+            <a
+              class="aol-case-study__media aol-case-study__media--tall"
+              href="../assets/images/feit-case/original-2.png"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open Feit original interface image 2"
+            >
+              <img
+                src="../assets/images/feit-case/original-2.png"
+                alt="Feit Electric original interface screen 2"
+              />
+            </a>
+            <a
+              class="aol-case-study__media aol-case-study__media--tall"
+              href="../assets/images/feit-case/original-3.png"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open Feit original interface image 3"
+            >
+              <img
+                src="../assets/images/feit-case/original-3.png"
+                alt="Feit Electric original interface screen 3"
+              />
+            </a>
+            <a
+              class="aol-case-study__media aol-case-study__media--tall"
+              href="../assets/images/feit-case/original-4.png"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open Feit original interface image 4"
+            >
+              <img
+                src="../assets/images/feit-case/original-4.png"
+                alt="Feit Electric original interface screen 4"
+              />
+            </a>
+            <a
+              class="aol-case-study__media aol-case-study__media--tall"
+              href="../assets/images/feit-case/original-5.png"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open Feit original interface image 5"
+            >
+              <img
+                src="../assets/images/feit-case/original-5.png"
+                alt="Feit Electric original interface screen 5"
+              />
+            </a>
+            <a
+              class="aol-case-study__media aol-case-study__media--tall"
+              href="../assets/images/feit-case/original-6.png"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open Feit original interface image 6"
+            >
+              <img
+                src="../assets/images/feit-case/original-6.png"
+                alt="Feit Electric original interface screen 6"
+              />
+            </a>
+          </div>
+          <p class="aol-case-study__copy">
+            The original Feit Electric app distributed core lighting controls across
+            multiple screens, resulting in a crowded bottom navigation and increased
+            cognitive load. Common actions such as adjusting color, brightness, or effects
+            required frequent page switching, making the experience feel fragmented and
+            unintuitive.
+          </p>
+        </section>
+
+        <section class="aol-case-study__section" id="feit-edits" aria-labelledby="feit-edits-title">
+          <h2 class="aol-case-study__section-title" id="feit-edits-title">
+            My Recommended Edits
+          </h2>
+          <a
+            class="aol-case-study__media aol-case-study__media--wireframe"
+            href="../assets/images/feit-case/recommended-edits.png"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open Feit recommended edits image"
+          >
+            <img
+              src="../assets/images/feit-case/recommended-edits.png"
+              alt="Feit Electric recommended edits wireframe overview"
+            />
+          </a>
+          <p class="aol-case-study__copy">
+            These wireframes focus on simplifying lighting controls by reducing navigation
+            friction and visual clutter while maintaining full functionality. The design
+            prioritizes faster interactions and a more seamless workflow within a single,
+            flexible interface. Here are some changes I made:
+          </p>
+          <ul class="aol-case-study__list">
+            <li>
+              <strong>Consolidated core lighting controls</strong> into one interface to
+              minimize navigation and visual noise.
+            </li>
+            <li>
+              <strong>Combined color and temperature selection into a simple toggle,</strong>
+              enabling quicker switching and freeing space in the bottom navigation.
+            </li>
+            <li>
+              <strong>Moved previously selected colors into a contextual menu</strong>
+              accessed via the active color, preserving functionality without persistent UI
+              elements.
+            </li>
+            <li>
+              <strong>Reintroduced the effects feature as a clearly labeled icon button</strong>
+              to improve discoverability after removing it from bottom navigation.
+            </li>
+            <li>
+              <strong>Integrated brightness controls directly into the main screen</strong>
+              using a press-and-drag interaction to reduce page depth and support smoother
+              workflows.
+            </li>
+          </ul>
+        </section>
+
+        <section class="aol-case-study__section" id="feit-final-details" aria-labelledby="feit-final-details-title">
+          <h2 class="aol-case-study__section-title" id="feit-final-details-title">
+            Final Details
+          </h2>
+          <a
+            class="aol-case-study__media aol-case-study__media--wireframe"
+            href="../assets/images/feit-case/final-details.png"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open Feit final details image"
+          >
+            <img
+              src="../assets/images/feit-case/final-details.png"
+              alt="Feit Electric final design details in light and dark mode"
+            />
+          </a>
+          <p class="aol-case-study__copy">
+            The final designs present a simplified, task-focused lighting experience where
+            <strong>color, temperature, brightness, and effects are accessible from a single
+            screen.</strong> I did mock-ups in <strong>both light and dark mode using
+            Material Design&apos;s design system</strong> to add versatility to what the
+            new design may look like in both light and dark scenarios. Overall, I
+            <strong>reduced the number of pages and navigation elements</strong> which
+            resulted in a more intuitive and efficient interaction model. The home screen
+            was restructured to better reflect how users think about their spaces.
+            <strong>Lights are organized into Groups, Individuals, and Locations,</strong>
+            helping users quickly find and manage lighting setups based on context rather
+            than a flat list.
+          </p>
+        </section>
+
+        <section class="aol-case-study__section" id="feit-final-thoughts" aria-labelledby="feit-final-thoughts-title">
+          <h2 class="aol-case-study__section-title" id="feit-final-thoughts-title">
+            Final Thoughts
+          </h2>
+          <p class="aol-case-study__copy">
+            This project reinforced the importance of minimizing navigation depth and
+            designing controls around user intent. By consolidating actions and reducing
+            cognitive load, the redesign creates a more approachable and scalable
+            experience for smart home users.
+          </p>
+        </section>
+      </article>
+    </main>
+
+    <script src="../scripts/main.js"></script>
+  </body>
+</html>
