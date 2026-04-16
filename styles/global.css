@@ -139,6 +139,10 @@ img {
   background-size: 280% 100%;
 }
 
+.layout-footer__icons a img {
+  transition: opacity 0.2s ease;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .layout-nav__brand:hover,
   .layout-nav__link:hover,
@@ -164,6 +168,10 @@ img {
     -webkit-background-clip: text;
     background-clip: text;
     animation: text-hover-gradient 6s linear infinite;
+  }
+
+  .layout-footer__icons a:hover img {
+    opacity: 0;
   }
 }
 
@@ -200,5 +208,13 @@ img {
     opacity: 1;
     transform: none;
     animation: none;
+  }
+
+  .layout-footer__icons a img {
+    transition: none;
+  }
+
+  .layout-footer__icons a:hover img {
+    opacity: 1;
   }
 }

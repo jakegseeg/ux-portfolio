@@ -242,10 +242,6 @@
       var triggerPoints = targets.map(function (item) {
         return Math.max(0, item.target.offsetTop - viewportHeight * 0.38);
       });
-      var start = triggerPoints[0];
-      var end = triggerPoints[triggerPoints.length - 1];
-      var range = Math.max(1, end - start);
-      var progress = Math.max(0, Math.min(1, (window.scrollY - start) / range));
       var activeIndex = 0;
 
       triggerPoints.forEach(function (point, index) {
@@ -261,6 +257,8 @@
         item.link.classList.toggle("is-active", isActive);
         item.link.setAttribute("aria-current", isActive ? "true" : "false");
       });
+
+      var progress = targets.length > 1 ? activeIndex / (targets.length - 1) : 0;
 
       if (progressEl) {
         progressEl.style.height = progress * 100 + "%";
@@ -287,10 +285,119 @@
     updateNav();
   }
 
+  function initSummitPrototype() {
+    var modal = document.querySelector("[data-prototype-modal]");
+    var belt = document.querySelector(".summit-logo-belt");
+    var beltItems = belt ? Array.from(belt.querySelectorAll(".summit-logo-belt__track img")) : [];
+    var beltFrame = null;
+    var beltActive = true;
+
+    function updateBeltItemOpacity() {
+      if (!belt || !beltItems.length) return;
+
+      var beltRect = belt.getBoundingClientRect();
+      var beltWidth = beltRect.width;
+      if (beltWidth <= 0) return;
+
+      var fadeZone = beltWidth * 0.46;
+      var rightZeroOffset = Math.max(20, beltWidth * 0.08);
+      var rightZeroPoint = beltRect.right - rightZeroOffset;
+
+      function clamp01(value) {
+        return Math.max(0, Math.min(1, value));
+      }
+
+      beltItems.forEach(function (item) {
+        var itemRect = item.getBoundingClientRect();
+        var leftOpacity = clamp01((itemRect.left - beltRect.left) / Math.max(1, fadeZone));
+        var rightOpacity = clamp01((rightZeroPoint - itemRect.right) / Math.max(1, fadeZone));
+        var opacity = Math.min(1, leftOpacity, rightOpacity);
+
+        item.style.opacity = String(opacity);
+      });
+    }
+
+    function runBeltFade() {
+      if (!beltActive) {
+        beltFrame = null;
+        return;
+      }
+      updateBeltItemOpacity();
+      beltFrame = window.requestAnimationFrame(runBeltFade);
+    }
+
+    function startBeltFadeLoop() {
+      if (!belt || !beltItems.length || beltFrame !== null) return;
+      beltActive = true;
+      beltFrame = window.requestAnimationFrame(runBeltFade);
+    }
+
+    function stopBeltFadeLoop() {
+      beltActive = false;
+      if (beltFrame !== null) {
+        window.cancelAnimationFrame(beltFrame);
+        beltFrame = null;
+      }
+    }
+
+    if (belt && beltItems.length) {
+      updateBeltItemOpacity();
+      if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                startBeltFadeLoop();
+              } else {
+                stopBeltFadeLoop();
+              }
+            });
+          },
+          { threshold: 0.05 }
+        );
+        observer.observe(belt);
+      } else {
+        startBeltFadeLoop();
+      }
+
+      window.addEventListener("resize", updateBeltItemOpacity);
+    }
+
+    if (!modal) return;
+
+    var openers = Array.from(document.querySelectorAll("[data-prototype-open]"));
+    var closers = Array.from(document.querySelectorAll("[data-prototype-close]"));
+
+    function openModal() {
+      modal.hidden = false;
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      modal.hidden = true;
+      document.body.style.overflow = "";
+    }
+
+    openers.forEach(function (opener) {
+      opener.addEventListener("click", openModal);
+    });
+
+    closers.forEach(function (closer) {
+      closer.addEventListener("click", closeModal);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && !modal.hidden) {
+        closeModal();
+      }
+    });
+  }
+
   initTheme();
   bindThemeToggle();
   bindNav();
   setYear();
   initCursorGlow();
   initCaseStudyNav();
+  initSummitPrototype();
 })();
