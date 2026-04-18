@@ -233,6 +233,15 @@
         .filter(Boolean);
     }
 
+    function scrollNavToActive(link) {
+      if (!link) return;
+      if (nav.scrollWidth <= nav.clientWidth) return;
+      nav.scrollTo({
+        left: link.offsetLeft - 16,
+        behavior: reducedMotion ? "instant" : "smooth"
+      });
+    }
+
     function updateNav() {
       var targets = getTargets();
       if (!targets.length) return;
@@ -260,9 +269,13 @@
 
       var progress = targets.length > 1 ? activeIndex / (targets.length - 1) : 0;
 
+      nav.style.setProperty("--nav-progress", String(progress));
+
       if (progressEl) {
         progressEl.style.height = progress * 100 + "%";
       }
+
+      scrollNavToActive(targets[activeIndex].link);
     }
 
     links.forEach(function (link) {

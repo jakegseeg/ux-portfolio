@@ -895,6 +895,88 @@ main > section:first-of-type:not(.layout-hero) {
   }
 }
 
+@media (max-width: 768px) {
+  .aol-case-nav {
+    --nav-progress: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 var(--space-md);
+    padding: 10px 0 13px;
+    left: auto;
+    right: auto;
+    transform: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    box-sizing: border-box;
+    background: var(--color-bg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .aol-case-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .aol-case-nav::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: calc(var(--nav-progress, 0) * 100%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.4));
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+    transition: width 0.18s ease-out;
+  }
+
+  .aol-case-nav__rail,
+  .aol-case-nav__progress {
+    display: none;
+  }
+
+  .aol-case-nav__item {
+    flex-shrink: 0;
+    gap: 0;
+    min-height: 44px;
+    align-items: center;
+    padding: 0 var(--space-md);
+    white-space: nowrap;
+  }
+
+  .aol-case-nav__dot {
+    display: none;
+  }
+
+  .aol-case-nav__label {
+    white-space: nowrap;
+    transform: none;
+  }
+
+  .aol-case-nav__item:hover .aol-case-nav__label,
+  .aol-case-nav__item:focus-visible .aol-case-nav__label {
+    transform: none;
+  }
+
+  .aol-case-nav__item.is-active .aol-case-nav__label {
+    color: rgba(255, 255, 255, 0.98);
+    font-weight: var(--weight-medium);
+    transform: none;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+  }
+}
+
 @media (max-width: 640px) {
   .aol-case-study__grid {
     grid-template-columns: 1fr;
