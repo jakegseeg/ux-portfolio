@@ -300,6 +300,7 @@
 
   function initSummitPrototype() {
     var modal = document.querySelector("[data-prototype-modal]");
+    var frame = document.querySelector(".summit-prototype__frame");
     var belt = document.querySelector(".summit-logo-belt");
     var beltItems = belt ? Array.from(belt.querySelectorAll(".summit-logo-belt__track img")) : [];
     var beltFrame = null;
@@ -376,14 +377,39 @@
       window.addEventListener("resize", updateBeltItemOpacity);
     }
 
+    function scalePrototypeFrame() {
+      if (!frame) return;
+      var scale = frame.offsetWidth / 1440;
+      frame.style.height = 900 * scale + "px";
+      frame.style.setProperty("--iframe-scale", String(scale));
+    }
+
+    scalePrototypeFrame();
+    window.addEventListener("resize", scalePrototypeFrame);
+
     if (!modal) return;
 
     var openers = Array.from(document.querySelectorAll("[data-prototype-open]"));
     var closers = Array.from(document.querySelectorAll("[data-prototype-close]"));
+    var dialog = modal.querySelector(".summit-prototype-modal__dialog");
+
+    function scaleModalFrame() {
+      if (!dialog) return;
+      var iframe = dialog.querySelector("iframe");
+      if (!iframe) return;
+      var availableWidth = dialog.clientWidth - 40;
+      var availableHeight = dialog.clientHeight - 76;
+      var scale = Math.min(availableWidth / 1440, availableHeight / 900);
+      dialog.style.setProperty("--modal-iframe-scale", String(scale));
+      iframe.style.marginBottom = 900 * scale - 900 + "px";
+    }
+
+    window.addEventListener("resize", scaleModalFrame);
 
     function openModal() {
       modal.hidden = false;
       document.body.style.overflow = "hidden";
+      scaleModalFrame();
     }
 
     function closeModal() {
