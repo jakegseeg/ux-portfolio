@@ -432,6 +432,71 @@
     });
   }
 
+  function initClubAbilityCompare() {
+    var root = document.querySelector("[data-before-after]");
+    if (!root) return;
+
+    var viewport = root.querySelector(".clubability-compare__viewport");
+    var clip = root.querySelector(".clubability-compare__clip");
+    var beforeFrame = root.querySelector(".clubability-compare__iframe--before");
+    var range = root.querySelector(".clubability-compare__range");
+    if (!viewport || !clip || !beforeFrame || !range) return;
+
+    function syncBeforeWidth() {
+      var w = viewport.offsetWidth;
+      if (w) {
+        beforeFrame.style.width = w + "px";
+      }
+    }
+
+    function updateClip() {
+      clip.style.width = Number(range.value) + "%";
+    }
+
+    syncBeforeWidth();
+    updateClip();
+    range.addEventListener("input", updateClip);
+    window.addEventListener("resize", syncBeforeWidth);
+    if (window.ResizeObserver) {
+      var ro = new ResizeObserver(syncBeforeWidth);
+      ro.observe(viewport);
+    }
+  }
+
+  function initClubAbilityTabs() {
+    var root = document.querySelector("[data-iteration-tabs]");
+    if (!root) return;
+
+    var tabs = Array.from(root.querySelectorAll(".clubability-tabs__tab"));
+    var panels = Array.from(root.querySelectorAll("[data-tab-panel]"));
+    if (!tabs.length || !panels.length) return;
+
+    function activate(id) {
+      tabs.forEach(function (tab) {
+        var isSel = tab.getAttribute("data-tab-id") === id;
+        tab.setAttribute("aria-selected", isSel ? "true" : "false");
+        tab.classList.toggle("is-active", isSel);
+        tab.setAttribute("tabindex", isSel ? "0" : "-1");
+      });
+      panels.forEach(function (panel) {
+        var match = panel.getAttribute("data-tab-panel") === id;
+        panel.hidden = !match;
+      });
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        activate(tab.getAttribute("data-tab-id"));
+      });
+    });
+  }
+
+  function initClubAbility() {
+    if (!document.body || !document.body.hasAttribute("data-club-page")) return;
+    initClubAbilityCompare();
+    initClubAbilityTabs();
+  }
+
   initTheme();
   bindThemeToggle();
   bindNav();
@@ -439,4 +504,5 @@
   initCursorGlow();
   initCaseStudyNav();
   initSummitPrototype();
+  initClubAbility();
 })();

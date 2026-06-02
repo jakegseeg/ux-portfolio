@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      (function () {
+        const stored = localStorage.getItem("theme");
+        const preferred = window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+        document.documentElement.setAttribute("data-theme", stored || preferred);
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Club Ability — Case study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="../styles/components.css" />
+    <link rel="stylesheet" href="../styles/layout.css" />
+    <style>
+      .clubability-meta {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-lg) var(--grid-gap);
+        margin-top: var(--space-xl);
+        margin-inline: auto;
+        padding-top: var(--space-lg);
+        border-top: 1px solid var(--color-bg-subtle);
+        width: 100%;
+        max-width: var(--max-width);
+        text-align: center;
+      }
+
+      .clubability-meta__cell {
+        min-width: 0;
+      }
+
+      .clubability-meta__label {
+        margin: 0 0 var(--space-xs);
+        font-family: var(--font-base);
+        font-size: clamp(1.15rem, 2vw, 1.45rem);
+        font-weight: var(--weight-medium);
+        line-height: 1.34;
+        color: var(--accent-club);
+      }
+
+      .clubability-meta__value {
+        margin: 0;
+        font-family: var(--font-base);
+        font-size: clamp(1.15rem, 2vw, 1.45rem);
+        font-weight: var(--weight-normal);
+        line-height: 1.34;
+        color: var(--color-text-secondary);
+      }
+    </style>
+  </head>
+  <body data-club-page>
+    <header>
+      <nav class="layout-nav" aria-label="Primary navigation">
+        <a class="layout-nav__brand" href="../index.html">Jake Seegmiller — UX Designer</a>
+        <div class="layout-nav__links">
+          <a class="layout-nav__link" href="../index.html#works">Case Studies</a>
+          <a class="layout-nav__link" href="../index.html#about">About Me</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="layout-case-study-main layout-case-study-main--aol" aria-label="Club Ability case study">
+      <nav class="aol-case-nav" aria-label="Club Ability case study sections">
+        <div class="aol-case-nav__rail" aria-hidden="true">
+          <span class="aol-case-nav__progress"></span>
+        </div>
+        <a class="aol-case-nav__item" href="#club-overview" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Overview</span>
+        </a>
+        <a class="aol-case-nav__item" href="#club-preview" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Preview</span>
+        </a>
+        <a class="aol-case-nav__item" href="#club-problem" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">The Problem</span>
+        </a>
+        <a class="aol-case-nav__item" href="#club-user-journey" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">User Journey</span>
+        </a>
+        <a class="aol-case-nav__item" href="#club-competitive-analysis" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Competitive Analysis</span>
+        </a>
+        <a class="aol-case-nav__item" href="#club-user-testing" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">User Testing</span>
+        </a>
+        <a class="aol-case-nav__item" href="#club-iterations" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Iterations</span>
+        </a>
+        <a class="aol-case-nav__item" href="#club-prototype" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Prototype</span>
+        </a>
+        <a class="aol-case-nav__item" href="#club-usability" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Usability Testing</span>
+        </a>
+        <a class="aol-case-nav__item" href="#club-retrospective" data-case-nav-link>
+          <span class="aol-case-nav__dot" aria-hidden="true"></span>
+          <span class="aol-case-nav__label">Retrospective</span>
+        </a>
+      </nav>
+
+      <a class="layout-case-study__back" href="../index.html#works">← Back to selected works</a>
+
+      <article class="aol-case-study clubability-case-study">
+        <header class="aol-case-study__hero" id="club-overview">
+          <p class="aol-case-study__eyebrow">Club Ability</p>
+          <h1 class="aol-case-study__title">Designing a More Professional First Impression</h1>
+          <p class="aol-case-study__intro">
+            Club Ability is a bilingual STEM and digital-skills organization serving diverse communities. As programs expanded across age groups, the CEO wanted the website to <strong>shift from a kid-centered feel to a more professional, community-centered experience.</strong> My goal was to make the site <strong>more clear, more organized, and easier to navigate </strong>for users with different needs, goals, and ages. My team and I used personas, journey mapping, market research, and usability testing with eye tracking to identify friction points. The final prototype improved navigation clarity, visual balance, and pathway guidance, then was handed off after stakeholder review.
+          </p>
+          <div class="clubability-meta" aria-label="Project metadata">
+            <div class="clubability-meta__cell">
+              <p class="clubability-meta__label">Role</p>
+              <p class="clubability-meta__value">Designer &amp; UX Researcher</p>
+            </div>
+            <div class="clubability-meta__cell">
+              <p class="clubability-meta__label">Team</p>
+              <p class="clubability-meta__value">5 Designers, 1 Product Manager</p>
+            </div>
+            <div class="clubability-meta__cell">
+              <p class="clubability-meta__label">Timeline</p>
+              <p class="clubability-meta__value">January 2026 – April 2026</p>
+            </div>
+            <div class="clubability-meta__cell">
+              <p class="clubability-meta__label">Tools</p>
+              <p class="clubability-meta__value">Figma, FigJam, Figma Make</p>
+            </div>
+          </div>
+        </header>
+
+        <section class="aol-case-study__section" id="club-preview" aria-labelledby="club-preview-title">
+          <h2 class="aol-case-study__section-title" id="club-preview-title">Preview</h2>
+          <p class="aol-case-study__copy clubability-case-study__lede">
+            Compare the original site with the redesigned direction. Drag the slider or use
+            the control to explore both.
+          </p>
+          <div
+            class="clubability-compare"
+            data-before-after
+            aria-label="Before and after website comparison"
+          >
+            <div class="clubability-compare__viewport">
+              <iframe
+                class="clubability-compare__iframe clubability-compare__iframe--after"
+                title="Club Ability redesigned site (PDF)"
+                src="../assets/images/clubability-case/redesigned.pdf#page=1&amp;view=FitH"
+                loading="lazy"
+              ></iframe>
+              <div class="clubability-compare__clip">
+                <iframe
+                  class="clubability-compare__iframe clubability-compare__iframe--before"
+                  title="Club Ability original site (PDF)"
+                  src="../assets/images/clubability-case/original.pdf#page=1&amp;view=FitH"
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </div>
+            <div class="clubability-compare__labels">
+              <span class="clubability-compare__label">Redesigned</span>
+              <span class="clubability-compare__label">Original</span>
+            </div>
+            <input
+              class="clubability-compare__range"
+              type="range"
+              min="0"
+              max="100"
+              value="0"
+              aria-label="Slide to compare original and redesigned site"
+            />
+          </div>
+          <p class="aol-case-study__copy">
+            Research findings and annotated notes will be expanded here once the narrative
+            and metrics are finalized.
+          </p>
+        </section>
+
+        <section class="aol-case-study__section" id="club-problem" aria-labelledby="club-problem-title">
+          <h2 class="aol-case-study__section-title" id="club-problem-title">The Problem</h2>
+          <p class="aol-case-study__copy">
+            The original site had strong mission content, but users found the navigation and
+            overall flow unclear and unorganized. Visitors struggled to quickly understand who
+            programs were for, where to start, and what action to take next. The visual tone
+            also leaned too kid-focused in places, making it harder to communicate a
+            professional, community-wide offering.
+          </p>
+          <p class="aol-case-study__copy">
+            This understanding led us to develop the following overall problem statement:
+            <br />            <strong>How can we preserve warmth while creating clearer pathways and stronger credibility for all ages along with an overall community feel?</strong>
+          </p>
+        </section>
+
+        <section class="aol-case-study__section" id="club-user-journey" aria-labelledby="club-user-journey-title">
+          <h2 class="aol-case-study__section-title" id="club-user-journey-title">User Journey</h2>
+          <p class="aol-case-study__copy">
+            I created personas, including Carlos,
+            <strong>to map how users moved from their first visit to action</strong>. In the
+            current journey, users landed with interest but lacked immediate orientation, then
+            encountered unclear navigation and inconsistent page flow. Decision points were
+            weak: users were unsure which program path matched their age, goals, or needs.
+            <strong>This uncertainty caused hesitation before enrollment</strong> or contact.
+            Journey mapping revealed that the core issue was not lack of content, but
+            <strong>lack of structure.</strong> My team &amp; I needed a pathway-first experience
+            that helps users quickly self-identify and move forward with confidence.
+          </p>
+          <a
+            class="aol-case-study__media aol-case-study__media--wireframe"
+            href="../assets/images/clubability-case/Persona Card.png"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Open Carlos persona card image full size"
+          >
+            <img
+              src="../assets/images/clubability-case/Persona Card.png"
+              alt="Carlos persona card"
+              loading="lazy"
+              style="margin-top: 30px;"
+            />
+          </a>
+        </section>
+
+        <section class="aol-case-study__section" id="club-competitive-analysis" aria-labelledby="club-competitive-analysis-title">
+          <h2 class="aol-case-study__section-title" id="club-competitive-analysis-title">Competitive Analysis</h2>
+          <p class="aol-case-study__copy">
+            Alongside site-mapping, I did
+            <strong>market research on what solutions to these issues currently existed</strong>.
+            Club Ability&apos;s site already had valuable assets like program information,
+            testimonials, sponsor visibility, and bilingual mission messaging; however, these
+            elements were spread across pages without a consistent hierarchy or predictable user
+            flow. Important information existed, but users had to work too hard to find it. The
+            redesign focused on reorganizing what was already strong into a clearer system that
+            supports user decision-making from entry to action and much of this was based on
+            research on what was currently available in this space.
+          </p>
+          <div style="display: flex; gap: 16px; margin-top: 30px;">
+            <figure style="width: 50%; display: flex; flex-direction: column;">
+              <img
+                src="../assets/images/clubability-case/COMPETITIVE_ANALYSIS_1.png"
+                alt="Competitive analysis reference one"
+                loading="lazy"
+                style="width: 100%; height: auto; border-radius: var(--radius-md);"
+              />
+              <figcaption
+                style="font-size: var(--text-sm); color: var(--color-text-secondary); font-style: italic; margin-top: 6px;"
+              >
+                Khan Academy&apos;s simple sign up process
+              </figcaption>
+            </figure>
+            <figure style="width: 50%; display: flex; flex-direction: column;">
+              <img
+                src="../assets/images/clubability-case/COMPETITIVE_ANALYSIS_2.png"
+                alt="Competitive analysis reference two"
+                loading="lazy"
+                style="width: 100%; height: auto; border-radius: var(--radius-md);"
+              />
+              <figcaption
+                style="font-size: var(--text-sm); color: var(--color-text-secondary); font-style: italic; margin-top: 6px;"
+              >
+                Campity Camp&apos;s use of colors to give a professional feel
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section
+          class="aol-case-study__section"
+          id="club-user-testing"
+          aria-labelledby="club-user-testing-title"
+          style="display: block;"
+        >
+          <h2 class="aol-case-study__section-title" id="club-user-testing-title">User Testing</h2>
+          <p class="aol-case-study__copy" style="display: block; width: 100%;">
+            After the analysis on other companies, my team &amp; I decided to
+            <strong>conduct various user testing.</strong> The first was survey based where
+            valuable light was shed on certain topics such as the typical age in this
+            demographic looking for education services surrounding technology as well as the
+            typical goal of these users when seeking out deeper knowledge in this area.
+          </p>
+          <div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 16px; margin-top: 30px; width: 100%;">
+            <figure style="width: 50%; margin: 0; display: flex; flex-direction: column;">
+              <img
+                src="../assets/images/clubability-case/form_info_1.png"
+                alt="Survey results page one"
+                loading="lazy"
+                style="width: 100%; height: auto; border-radius: var(--radius-md);"
+              />
+            </figure>
+            <figure style="width: 50%; margin: 0; display: flex; flex-direction: column;">
+              <img
+                src="../assets/images/clubability-case/form_info_2.png"
+                alt="Survey results page two"
+                loading="lazy"
+                style="width: 100%; height: auto; border-radius: var(--radius-md);"
+              />
+            </figure>
+          </div>
+          <p class="aol-case-study__copy" style="display: block; width: 100%; margin-top: 30px;">
+            From there, we brought in three individuals that were within the scope of the
+            target market and conduct eye tracking testing surrounding the current site where
+            we had them complete the following tasks:
+          </p>
+          <ul
+            style="display: block; width: 100%; margin-top: 12px; padding-left: 20px; font-size: var(--text-md);"
+          >
+            <li style="font-size: var(--text-md); line-height: var(--leading-loose); color: var(--color-text-primary);">
+              <strong>Explore the site</strong> to understand what it&apos;s for
+            </li>
+            <li style="font-size: var(--text-md); line-height: var(--leading-loose); color: var(--color-text-primary);">
+              Act as a parent interested in <strong>signing up their child</strong> for a course
+              and to navigate accordingly
+            </li>
+            <li style="font-size: var(--text-md); line-height: var(--leading-loose); color: var(--color-text-primary);">
+              Act as an adult wanting to <strong>sign up yourself</strong> and navigate
+              accordingly
+            </li>
+          </ul>
+          <p class="aol-case-study__copy" style="display: block; width: 100%; margin-top: 20px;">
+            Each of these participants had struggles with the current site for reasons
+            surrounding how clear the purpose of the company was as well as general information
+            on course specifics. This testing helped us hone in on some of the biggest problems
+            to move forward in solving.
+          </p>
+        </section>
+
+        <section class="aol-case-study__section" id="club-iterations" aria-labelledby="club-iterations-title">
+          <h2 class="aol-case-study__section-title" id="club-iterations-title">Iterations</h2>
+          <p class="aol-case-study__copy clubability-case-study__lede">
+Based on research findings, I moved through fast iteration cycles. I started with <strong>whiteboard sketches to explore structure and simplify pathways.</strong> Next, I built wireframes to test navigation clarity and content hierarchy. I also used <strong>Figma Make to expand ideation and compare layout directions.</strong> After cycling through multiple iterations with my team, we selected a final direction and refined it to ensure it was centered in solving the core problem statement. Key improvements included <strong>cleaning up navigation</strong>, <strong>reducing harsh color usage</strong>, and creating <strong>clearer routes for users based on wants, needs, and age.</strong> Throughout refinement, we balanced professional tone with accessibility and community warmth to keep the brand approachable.
+          </p>
+          <div class="clubability-tabs" data-iteration-tabs>
+            <div class="clubability-tabs__tablist" role="tablist" aria-label="Iteration views">
+              <button
+                class="clubability-tabs__tab"
+                type="button"
+                role="tab"
+                id="tab-club-wireframe"
+                aria-selected="true"
+                aria-controls="panel-club-wireframe"
+                data-tab-id="wireframe"
+              >
+                Wireframe
+              </button>
+              <button
+                class="clubability-tabs__tab"
+                type="button"
+                role="tab"
+                id="tab-club-hifi"
+                aria-selected="false"
+                aria-controls="panel-club-hifi"
+                tabindex="-1"
+                data-tab-id="hifi"
+              >
+                Hi-Fi Mockup
+              </button>
+            </div>
+            <div
+              class="clubability-tabs__panel"
+              role="tabpanel"
+              id="panel-club-wireframe"
+              aria-labelledby="tab-club-wireframe"
+              data-tab-panel="wireframe"
+            >
+              <div class="clubability-slideshow" data-slideshow>
+                <div
+                  class="clubability-slideshow__viewport"
+                  id="club-slideshow-wireframe-viewport"
+                  aria-label="Wireframe slides"
+                >
+                  <div data-slide data-slide-index="0" data-slide-active>
+                    <img
+                      src="../assets/images/clubability-case/WIREFRAME_1.png"
+                      alt="Club Ability wireframe — programs page"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div data-slide data-slide-index="1">
+                    <img
+                      src="../assets/images/clubability-case/WIREFRAME_2.png"
+                      alt="Club Ability wireframe — home page"
+                      loading="lazy"
+                    />
+                  </div>
+                  <button
+                    class="clubability-slideshow__arrow clubability-slideshow__arrow--prev"
+                    type="button"
+                    data-slideshow-prev
+                    aria-controls="club-slideshow-wireframe-viewport"
+                    aria-label="Previous wireframe slide"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15 6l-6 6 6 6"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    class="clubability-slideshow__arrow clubability-slideshow__arrow--next"
+                    type="button"
+                    data-slideshow-next
+                    aria-controls="club-slideshow-wireframe-viewport"
+                    aria-label="Next wireframe slide"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 6l6 6-6 6"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="clubability-slideshow__dots" role="group" aria-label="Wireframe slides">
+                  <button
+                    type="button"
+                    class="clubability-slideshow__dot"
+                    data-slide-dot="0"
+                    aria-label="Show wireframe slide 1"
+                  ></button>
+                  <button
+                    type="button"
+                    class="clubability-slideshow__dot"
+                    data-slide-dot="1"
+                    aria-label="Show wireframe slide 2"
+                  ></button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="clubability-tabs__panel"
+              role="tabpanel"
+              id="panel-club-hifi"
+              aria-labelledby="tab-club-hifi"
+              hidden
+              data-tab-panel="hifi"
+            >
+              <div class="clubability-slideshow" data-slideshow>
+                <div
+                  class="clubability-slideshow__viewport"
+                  id="club-slideshow-hifi-viewport"
+                  aria-label="Hi-Fi mockup slides"
+                >
+                  <div data-slide data-slide-index="0" data-slide-active>
+                    <img
+                      src="../assets/images/clubability-case/REDESIGN_1.png"
+                      alt="Club Ability hi-fi mockup — programs page"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div data-slide data-slide-index="1">
+                    <img
+                      src="../assets/images/clubability-case/REDESIGN_2.png"
+                      alt="Club Ability hi-fi mockup — home page"
+                      loading="lazy"
+                    />
+                  </div>
+                  <button
+                    class="clubability-slideshow__arrow clubability-slideshow__arrow--prev"
+                    type="button"
+                    data-slideshow-prev
+                    aria-controls="club-slideshow-hifi-viewport"
+                    aria-label="Previous hi-fi slide"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15 6l-6 6 6 6"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    class="clubability-slideshow__arrow clubability-slideshow__arrow--next"
+                    type="button"
+                    data-slideshow-next
+                    aria-controls="club-slideshow-hifi-viewport"
+                    aria-label="Next hi-fi slide"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                      <path
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9 6l6 6-6 6"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="clubability-slideshow__dots" role="group" aria-label="Hi-Fi mockup slides">
+                  <button
+                    type="button"
+                    class="clubability-slideshow__dot"
+                    data-slide-dot="0"
+                    aria-label="Show hi-fi slide 1"
+                  ></button>
+                  <button
+                    type="button"
+                    class="clubability-slideshow__dot"
+                    data-slide-dot="1"
+                    aria-label="Show hi-fi slide 2"
+                  ></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="aol-case-study__copy" style="margin-top: 20px;">
+            Based on the testing period of this process, I found the biggest pain points were
+            the navigation, the overall flow of the site, and the look and feel of the
+            aesthetic. With this in mind, I made the following implementations in order to address
+            the concerns that were discovered:
+          </p>
+          <ul
+            style="margin-top: 12px; padding-left: 20px; line-height: var(--leading-loose); font-size: var(--text-md); color: var(--color-text-primary);"
+          >
+            <li>
+              Navigation
+              <ul style="padding-left: 20px; margin-top: 4px;">
+                <li style="font-size: var(--text-md); color: var(--color-text-primary);">
+                  <strong>Simple and clear, a little more minimalistic</strong>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Flow of the site
+              <ul style="padding-left: 20px; margin-top: 4px;">
+                <li style="font-size: var(--text-md); color: var(--color-text-primary);">
+                  <strong>Courses immediately available</strong> for the user to see and
+                  understand as well as appropriate visuals that properly show preview what the
+                  course entails
+                </li>
+              </ul>
+            </li>
+            <li>
+              Look &amp; Feel
+              <ul style="padding-left: 20px; margin-top: 4px;">
+                <li style="font-size: var(--text-md); color: var(--color-text-primary);">
+                  Kept the same light pink and light blue colors as before; however, they were
+                  merely accents rather than being overly prevalent to help with the
+                  &apos;kid only&apos; feel to the original website.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <section class="aol-case-study__section" id="club-prototype" aria-labelledby="club-prototype-title">
+          <h2 class="aol-case-study__section-title" id="club-prototype-title">Prototype</h2>
+          <p class="aol-case-study__copy clubability-case-study__lede">
+            The high-fidelity prototype translated my research into a clearer, more intentional experience. It introduced stronger information hierarchy, cleaner navigation, and clearer call-to-action placement. The design gave users faster orientation and more confidence in where to go next. 
+          </p>
+          <div
+            class="clubability-proto"
+            data-clubability-proto
+            data-embed-desktop="https://embed.figma.com/proto/hopWraNJqgYvZDV2VNHrz3/Club-Ability-Redesign?node-id=424-7199&amp;viewport=1547%2C-366%2C0.03&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=424%3A7199&amp;page-id=0%3A1&amp;embed-host=share"
+            data-embed-mobile="https://embed.figma.com/proto/C5P59HSkyQ3dFtJbd6HfVA/Surface-Comps?node-id=13-4746&amp;p=f&amp;viewport=-12830%2C277%2C0.65&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=13%3A4746&amp;page-id=13%3A4332&amp;embed-host=share"
+          >
+            <div class="clubability-proto__toolbar" role="group" aria-label="Prototype frame size">
+              <button
+                class="clubability-proto__size-btn is-active"
+                type="button"
+                data-proto-size="desktop"
+                aria-pressed="true"
+              >
+                Desktop
+              </button>
+              <button
+                class="clubability-proto__size-btn"
+                type="button"
+                data-proto-size="mobile"
+                aria-pressed="false"
+              >
+                Mobile
+              </button>
+            </div>
+            <p class="clubability-proto__placeholder aol-case-study__copy" data-clubability-proto-empty>
+              Add <code class="clubability-proto__code">data-embed-desktop</code> and
+              <code class="clubability-proto__code">data-embed-mobile</code> on the
+              prototype block with your Figma embed URLs.
+            </p>
+            <div class="clubability-proto__stage" data-clubability-proto-stage hidden>
+              <div class="clubability-proto__embed clubability-proto__embed--desktop" data-proto-embed="desktop">
+                <div class="clubability-proto__skeleton" aria-hidden="true"></div>
+                <iframe
+                  class="clubability-proto__iframe"
+                  title="Club Ability Figma prototype — desktop"
+                  loading="lazy"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div
+                class="clubability-proto__embed clubability-proto__embed--mobile"
+                data-proto-embed="mobile"
+                hidden
+              >
+                <div class="clubability-proto__skeleton" aria-hidden="true"></div>
+                <iframe
+                  class="clubability-proto__iframe"
+                  title="Club Ability Figma prototype — mobile"
+                  loading="lazy"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="aol-case-study__section" id="club-usability" aria-labelledby="club-usability-title">
+          <h2 class="aol-case-study__section-title" id="club-usability-title">Usability Testing &amp; Validation</h2>
+          <p class="aol-case-study__copy">
+            My team and I conducted further usability testing through Maze to validate whether
+            users could find and follow key pathways. Testing focused on
+            <strong>first-click behavior, navigation discoverability, and the visibility of key actions.</strong>
+            Eye-tracking patterns showed that users previously spent too much time scanning
+            without clear direction, especially around navigation and decision points. These
+            insights helped us reorganize hierarchy and improve visual emphasis for primary
+            routes.
+          </p>
+          <img
+            src="../assets/images/clubability-case/MAZE_TESTING.png"
+            alt="Maze usability testing results"
+            loading="lazy"
+            style="width: 100%; height: auto; border-radius: var(--radius-md); margin-top: 30px;"
+          />
+          <p class="aol-case-study__copy" style="margin-top: 20px;">
+            The testing we conducted showed an
+            <strong>overall increase in satisfaction</strong>; however, comments that were left
+            definitely helped us to understand improvements that my team and I need to make in
+            the future.
+          </p>
+        </section>
+
+        <section class="aol-case-study__section" id="club-retrospective" aria-labelledby="club-retrospective-title">
+          <h2 class="aol-case-study__section-title" id="club-retrospective-title">Project Retrospective</h2>
+          <p class="aol-case-study__copy">
+            Thorough target-market research gave this project direction and helped me focus on
+            real pain points rather than assumptions. Persona development, journey mapping, and
+            testing created a clear framework for design decisions. CEO check-ins kept the
+            solution aligned with organizational goals, and iterative prototyping helped the
+            team converge efficiently. Due to the nature of this class, once we ran out of overall
+            time for the company, this is where the work of myself and my team ended, so we
+            developed a functioning prototype and a detailed hand-off document for the next team
+            to come in and further our designs.
+          </p>
+          <p class="aol-case-study__copy" style="margin-top: 20px;">
+            If I repeated this project, I would strengthen user research further by expanding
+            participant diversity, running additional testing rounds earlier, and defining
+            measurement metrics sooner. That would improve validation depth and post-launch
+            impact tracking.
+          </p>
+          <p class="aol-case-study__copy" style="margin-top: 20px;">
+            This project reinforced the value of structured UX process at every stage. Given more
+            time, I would have expanded participant diversity in testing and established success
+            metrics earlier to better validate outcomes post-handoff.
+          </p>
+        </section>
+      </article>
+
+      <a class="layout-case-study__back layout-case-study__back--bottom" href="../index.html#works">← Back to selected works</a>
+    </main>
+
+    <script src="../scripts/main.js"></script>
+    <script>
+      (function () {
+        "use strict";
+
+        var prefersReduced =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        function initSlideshow(root) {
+          var viewport = root.querySelector(".clubability-slideshow__viewport");
+          if (!viewport) return;
+
+          var slides = Array.from(viewport.querySelectorAll("[data-slide]"));
+          if (slides.length < 2) return;
+
+          var prevBtn = root.querySelector("[data-slideshow-prev]");
+          var nextBtn = root.querySelector("[data-slideshow-next]");
+          var timerId = null;
+
+          function getActiveIndex() {
+            for (var i = 0; i < slides.length; i++) {
+              if (slides[i].hasAttribute("data-slide-active")) {
+                return i;
+              }
+            }
+            return 0;
+          }
+
+          function updateArrowDim() {
+            var i = getActiveIndex();
+            var last = slides.length - 1;
+            if (prevBtn) {
+              prevBtn.classList.toggle("clubability-slideshow__arrow--dim", i === 0);
+            }
+            if (nextBtn) {
+              nextBtn.classList.toggle("clubability-slideshow__arrow--dim", i === last);
+            }
+          }
+
+          var dotsRoot = root.querySelector(".clubability-slideshow__dots");
+          var dotButtons = dotsRoot
+            ? Array.from(dotsRoot.querySelectorAll("[data-slide-dot]"))
+            : [];
+
+          function updateDots() {
+            var i = getActiveIndex();
+            dotButtons.forEach(function (btn) {
+              var idx = parseInt(btn.getAttribute("data-slide-dot"), 10);
+              var on = idx === i;
+              btn.classList.toggle("is-active", on);
+              if (on) {
+                btn.setAttribute("aria-current", "true");
+              } else {
+                btn.removeAttribute("aria-current");
+              }
+            });
+          }
+
+          function goToInternal(nextIdx) {
+            nextIdx = (nextIdx + slides.length) % slides.length;
+            slides.forEach(function (s) {
+              s.removeAttribute("data-slide-active");
+            });
+            slides[nextIdx].setAttribute("data-slide-active", "");
+            updateArrowDim();
+            updateDots();
+          }
+
+          function scheduleNext() {
+            clearTimeout(timerId);
+            if (prefersReduced) return;
+            timerId = setTimeout(function () {
+              var i = getActiveIndex();
+              goToInternal((i + 1) % slides.length);
+              scheduleNext();
+            }, 12000);
+          }
+
+          function goTo(nextIdx) {
+            goToInternal(nextIdx);
+            scheduleNext();
+          }
+
+          if (prevBtn) {
+            prevBtn.addEventListener("click", function () {
+              goTo(getActiveIndex() - 1);
+            });
+          }
+          if (nextBtn) {
+            nextBtn.addEventListener("click", function () {
+              goTo(getActiveIndex() + 1);
+            });
+          }
+
+          dotButtons.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              var idx = parseInt(btn.getAttribute("data-slide-dot"), 10);
+              if (Number.isNaN(idx)) return;
+              goTo(idx);
+            });
+          });
+
+          updateArrowDim();
+          updateDots();
+          scheduleNext();
+        }
+
+        document.querySelectorAll("[data-slideshow]").forEach(function (root) {
+          initSlideshow(root);
+        });
+
+        function initClubAbilityPrototypeToggle() {
+          var root = document.querySelector("[data-clubability-proto]");
+          if (!root) return;
+
+          var emptyEl = root.querySelector("[data-clubability-proto-empty]");
+          var stage = root.querySelector("[data-clubability-proto-stage]");
+          var dUrl = (root.getAttribute("data-embed-desktop") || "").trim();
+          var mUrl = (root.getAttribute("data-embed-mobile") || "").trim();
+
+          if (!dUrl && !mUrl) {
+            return;
+          }
+
+          if (emptyEl) {
+            emptyEl.hidden = true;
+          }
+          if (stage) {
+            stage.hidden = false;
+          }
+
+          var desktopBtn = root.querySelector('[data-proto-size="desktop"]');
+          var mobileBtn = root.querySelector('[data-proto-size="mobile"]');
+          var desktopWrap = root.querySelector('[data-proto-embed="desktop"]');
+          var mobileWrap = root.querySelector('[data-proto-embed="mobile"]');
+          var desktopIframe = desktopWrap ? desktopWrap.querySelector("iframe") : null;
+          var mobileIframe = mobileWrap ? mobileWrap.querySelector("iframe") : null;
+
+          if (desktopBtn) {
+            desktopBtn.disabled = !dUrl;
+          }
+          if (mobileBtn) {
+            mobileBtn.disabled = !mUrl;
+          }
+
+          function bindOnceLoad(embed, iframe) {
+            if (!embed || !iframe) return;
+            function onLoad() {
+              embed.classList.add("is-loaded");
+              iframe.removeEventListener("load", onLoad);
+            }
+            iframe.addEventListener("load", onLoad);
+          }
+
+          function loadEmbed(which) {
+            var url = which === "desktop" ? dUrl : mUrl;
+            var wrap = which === "desktop" ? desktopWrap : mobileWrap;
+            var iframe = which === "desktop" ? desktopIframe : mobileIframe;
+            if (!url || !wrap || !iframe) return;
+            if (iframe.getAttribute("src") === url) {
+              wrap.classList.add("is-loaded");
+              return;
+            }
+            wrap.classList.remove("is-loaded");
+            bindOnceLoad(wrap, iframe);
+            iframe.setAttribute("src", url);
+          }
+
+          function setView(which) {
+            if (desktopBtn) {
+              desktopBtn.setAttribute(
+                "aria-pressed",
+                which === "desktop" ? "true" : "false"
+              );
+              desktopBtn.classList.toggle("is-active", which === "desktop");
+            }
+            if (mobileBtn) {
+              mobileBtn.setAttribute("aria-pressed", which === "mobile" ? "true" : "false");
+              mobileBtn.classList.toggle("is-active", which === "mobile");
+            }
+            if (desktopWrap) {
+              desktopWrap.hidden = which !== "desktop";
+            }
+            if (mobileWrap) {
+              mobileWrap.hidden = which !== "mobile";
+            }
+            if (which === "desktop" && dUrl) {
+              loadEmbed("desktop");
+            }
+            if (which === "mobile" && mUrl) {
+              loadEmbed("mobile");
+            }
+          }
+
+          var initial = dUrl ? "desktop" : "mobile";
+          setView(initial);
+
+          if (desktopBtn) {
+            desktopBtn.addEventListener("click", function () {
+              if (desktopBtn.disabled || !dUrl) return;
+              setView("desktop");
+            });
+          }
+          if (mobileBtn) {
+            mobileBtn.addEventListener("click", function () {
+              if (mobileBtn.disabled || !mUrl) return;
+              setView("mobile");
+            });
+          }
+        }
+
+        initClubAbilityPrototypeToggle();
+      })();
+    </script>
+  </body>
+</html>

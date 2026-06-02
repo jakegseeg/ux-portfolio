@@ -21,6 +21,28 @@
     <link rel="stylesheet" href="styles/global.css" />
     <link rel="stylesheet" href="styles/components.css" />
     <link rel="stylesheet" href="styles/layout.css" />
+    <style>
+      @media (max-width: 640px) {
+        .layout-philosophy__about-columns {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .layout-philosophy__about-photo {
+          flex: none !important;
+          width: 100%;
+        }
+      }
+
+      .layout-footer__icons a span[style*='opacity'] {
+        opacity: 0 !important;
+        -webkit-text-fill-color: var(--color-text-secondary) !important;
+        background-image: none !important;
+      }
+      .layout-footer__icons a:hover span[style*='opacity'] {
+        opacity: 1 !important;
+      }
+    </style>
   </head>
   <body id="top">
     <header>
@@ -52,6 +74,21 @@
             focused on clarity, usability, and intuitive interaction patterns.
           </p>
           <div class="layout-works__grid" role="list" aria-label="Selected projects">
+            <a
+              class="proj-card"
+              role="listitem"
+              href="pages/clubability.html"
+              data-glow="#E8A0BF"
+              data-hover-glow
+              aria-label="Club Ability — open case study"
+            >
+              <img class="card-thumb" src="assets/images/clubability.png" alt="Club Ability nonprofit website redesign" />
+              <div class="card-scrim"></div>
+              <div class="card-text">
+                <p class="card-name">Club Ability</p>
+                <span class="card-tag">Designing a More Professional First Impression</span>
+              </div>
+            </a>
             <a
               class="proj-card"
               role="listitem"
@@ -97,14 +134,6 @@
                 <span class="card-tag">Decluttering AOL Mail for Faster Orientation</span>
               </div>
             </a>
-            <article class="proj-card" role="listitem" data-glow="#5A5A7A" data-hover-glow>
-              <img class="card-thumb" src="assets/images/hig.png" alt="Human Interface Guidelines design system study" />
-              <div class="card-scrim"></div>
-              <div class="card-text">
-                <p class="card-name">Human Interface Guidelines</p>
-                <span class="card-tag">In-depth personal findings surrounding Apple’s Design System</span>
-              </div>
-            </article>
           </div>
         </div>
       </section>
@@ -116,7 +145,47 @@
           goal is to remove friction, simplify complexity, and create digital experiences
           that feel like a natural extension of the user's intent.
         </p>
-        <p class="layout-philosophy__skills">
+        <hr
+          style="border: none; border-top: 1px solid var(--color-bg-subtle); margin: var(--space-xl) 0; max-width: var(--works-max-width, 1100px); margin-left: auto; margin-right: auto; padding-left: var(--space-xl); padding-right: var(--space-xl);"
+        />
+        <div
+          class="layout-philosophy__about-columns"
+          style="display: flex; gap: var(--space-xl); align-items: center; max-width: var(--works-max-width, 1100px); margin-left: auto; margin-right: auto; padding-left: var(--space-xl); padding-right: var(--space-xl);"
+        >
+          <div class="layout-philosophy__about-photo" style="flex: 0 0 420px;">
+              <img
+                src="assets/images/about_me.jpeg"
+                alt="Jake Seegmiller"
+                style="width: 100%; height: auto; border-radius: var(--radius-lg); display: block;"
+              />
+            </div>
+            <div style="flex: 1;">
+              <p
+                style="color: var(--color-text-secondary); font-size: var(--text-md); line-height: var(--leading-loose);"
+              >
+                Hi, I'm Jake — a Product and UX Designer from Grand Rapids, Michigan. I have a
+                deep appreciation for design technique, design laws, and the structured
+                psychology that sits behind great experiences. I also bring a proficient
+                understanding of front-end development to my work, having built several
+                personal projects in HTML, CSS, and JavaScript.
+              </p>
+              <p
+                style="margin-top: var(--space-md); color: var(--color-text-secondary); font-size: var(--text-md); line-height: var(--leading-loose);"
+              >
+                When I'm not designing, you'll find me with my wife Ella — whether that's
+                somewhere in the mountains or on the couch watching a movie.
+              </p>
+              <a
+                href="assets/images/Resume_-_Jake_Seegmiller_2026.jpg"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="display: inline-block; margin-top: var(--space-lg); padding: 10px 20px; border: 1px solid var(--color-text-muted); border-radius: var(--radius-pill); font-size: var(--text-sm); color: var(--color-text-secondary); transition: border-color var(--transition-base), color var(--transition-base);"
+              >
+                View Resume ↗
+              </a>
+            </div>
+          </div>
+        <p class="layout-philosophy__skills" style="font-size: var(--text-md);">
           Product Strategy · Interface Design · Interaction Design · User Research
         </p>
       </section>
@@ -133,6 +202,7 @@
         <div class="layout-footer__right">
           <div class="layout-footer__icons">
             <a href="mailto:jakegseeg@gmail.com" aria-label="Email Jake">
+              <span style="position: relative; display: inline-flex; align-items: center; justify-content: center;">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" width="20" height="20" aria-hidden="true">
                 <path
                   stroke="currentColor"
@@ -142,6 +212,8 @@
                   d="M10 19H6.2C5.0799 19 4.51984 19 4.09202 18.782C3.71569 18.5903 3.40973 18.2843 3.21799 17.908C3 17.4802 3 16.9201 3 15.8V8.2C3 7.0799 3 6.51984 3.21799 6.09202C3.40973 5.71569 3.71569 5.40973 4.09202 5.21799C4.51984 5 5.0799 5 6.2 5H17.8C18.9201 5 19.4802 5 19.908 5.21799C20.2843 5.40973 20.5903 5.71569 20.782 6.09202C21 6.51984 21 7.0799 21 8.2V10M20.6067 8.26229L15.5499 11.6335C14.2669 12.4888 13.6254 12.9165 12.932 13.0827C12.3192 13.2295 11.6804 13.2295 11.0677 13.0827C10.3743 12.9165 9.73279 12.4888 8.44975 11.6335L3.14746 8.09863M14 21L16.025 20.595C16.2015 20.5597 16.2898 20.542 16.3721 20.5097C16.4452 20.4811 16.5147 20.4439 16.579 20.399C16.6516 20.3484 16.7152 20.2848 16.8426 20.1574L21 16C21.5523 15.4477 21.5523 14.5523 21 14C20.4477 13.4477 19.5523 13.4477 19 14L14.8426 18.1574C14.7152 18.2848 14.6516 18.3484 14.601 18.421C14.5561 18.4853 14.5189 18.5548 14.4903 18.6279C14.458 18.7102 14.4403 18.7985 14.405 18.975L14 21Z"
                 />
               </svg>
+                <span style="position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); font-size: 10px; color: var(--color-text-secondary); white-space: nowrap; opacity: 0; transition: opacity var(--transition-base); pointer-events: none;">Email</span>
+              </span>
             </a>
             <a
               href="https://www.linkedin.com/in/jacob-seegmiller-11bab8307"
@@ -149,6 +221,7 @@
               rel="noopener noreferrer"
               aria-label="Jake on LinkedIn"
             >
+              <span style="position: relative; display: inline-flex; align-items: center; justify-content: center;">
               <img
                 src="assets/icons/linkedin_logo.png"
                 width="20"
@@ -156,8 +229,11 @@
                 alt=""
                 aria-hidden="true"
               />
+                <span style="position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); font-size: 10px; color: var(--color-text-secondary); white-space: nowrap; opacity: 0; transition: opacity var(--transition-base); pointer-events: none;">LinkedIn</span>
+              </span>
             </a>
             <a href="https://github.com/jakegseeg" target="_blank" rel="noopener noreferrer" aria-label="Jake on GitHub">
+              <span style="position: relative; display: inline-flex; align-items: center; justify-content: center;">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="84 7399 20 20" width="20" height="20" aria-hidden="true">
                 <path
                   fill="currentColor"
@@ -165,6 +241,8 @@
                   d="M94,7399 C99.523,7399 104,7403.59 104,7409.253 C104,7413.782 101.138,7417.624 97.167,7418.981 C96.66,7419.082 96.48,7418.762 96.48,7418.489 C96.48,7418.151 96.492,7417.047 96.492,7415.675 C96.492,7414.719 96.172,7414.095 95.813,7413.777 C98.04,7413.523 100.38,7412.656 100.38,7408.718 C100.38,7407.598 99.992,7406.684 99.35,7405.966 C99.454,7405.707 99.797,7404.664 99.252,7403.252 C99.252,7403.252 98.414,7402.977 96.505,7404.303 C95.706,7404.076 94.85,7403.962 94,7403.958 C93.15,7403.962 92.295,7404.076 91.497,7404.303 C89.586,7402.977 88.746,7403.252 88.746,7403.252 C88.203,7404.664 88.546,7405.707 88.649,7405.966 C88.01,7406.684 87.619,7407.598 87.619,7408.718 C87.619,7412.646 89.954,7413.526 92.175,7413.785 C91.889,7414.041 91.63,7414.493 91.54,7415.156 C90.97,7415.418 89.522,7415.871 88.63,7414.304 C88.63,7414.304 88.101,7413.319 87.097,7413.247 C87.097,7413.247 86.122,7413.234 87.029,7413.87 C87.029,7413.87 87.684,7414.185 88.139,7415.37 C88.139,7415.37 88.726,7417.2 91.508,7416.58 C91.513,7417.437 91.522,7418.245 91.522,7418.489 C91.522,7418.76 91.338,7419.077 90.839,7418.982 C86.865,7417.627 84,7413.783 84,7409.253 C84,7403.59 88.478,7399 94,7399"
                 />
               </svg>
+                <span style="position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); font-size: 10px; color: var(--color-text-secondary); white-space: nowrap; opacity: 0; transition: opacity var(--transition-base); pointer-events: none;">GitHub</span>
+              </span>
             </a>
             <a
               href="assets/images/Resume_-_Jake_Seegmiller_2026.jpg"
@@ -172,6 +250,7 @@
               rel="noopener noreferrer"
               aria-label="Download Jake's resume"
             >
+              <span style="position: relative; display: inline-flex; align-items: center; justify-content: center;">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 846.66 846.66" width="20" height="20" aria-hidden="true">
                 <path
                   fill="currentColor"
@@ -179,6 +258,8 @@
                   d="M539.75 794.68c27.15,0 27.15,41.29 0,41.29l-497.47 0c-11.4,0 -20.64,-9.25 -20.64,-20.65l0 -621.69c0,-5.7 2.31,-10.87 6.04,-14.6l162.3 -162.29c4.03,-4.03 9.31,-6.05 14.59,-6.05l466.89 0c11.4,0 20.65,9.25 20.65,20.65l0 361.36c0,27.16 -41.29,27.16 -41.29,0l0 -340.72 -437.7 0 -150.19 150.2 0 592.5 476.82 0zm-351.21 -181.98c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 -274.68c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 91.56c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 91.56c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm0 -274.68c-27.16,0 -27.16,-41.29 0,-41.29l306.67 0c27.16,0 27.16,41.29 0,41.29l-306.67 0zm496.57 238.25c49.84,0 90.24,40.4 90.24,90.24 0,18.1 -5.33,34.95 -14.5,49.07 37.57,24.93 61.47,66.08 64.13,111.2 1.59,27.06 -39.55,29.47 -41.13,2.42 -2.11,-35.69 -22.61,-67.48 -54.13,-84.24 -13.16,7.5 -28.38,11.78 -44.61,11.78 -17.56,0 -33.95,-5.01 -47.81,-13.69 -33.44,16.12 -55.6,49.04 -57.79,86.15 -1.59,27.05 -42.72,24.64 -41.13,-2.42 2.79,-47.18 28.75,-89.88 69.08,-114.28 -7.99,-13.47 -12.58,-29.19 -12.58,-45.99 0,-49.83 40.4,-90.24 90.23,-90.24zm0 41.29c-27.03,0 -48.94,21.92 -48.94,48.95 0,27.03 21.91,48.94 48.94,48.94 27.03,0 48.95,-21.91 48.95,-48.94 0,-27.03 -21.91,-48.95 -48.95,-48.95z"
                 />
               </svg>
+                <span style="position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); font-size: 10px; color: var(--color-text-secondary); white-space: nowrap; opacity: 0; transition: opacity var(--transition-base); pointer-events: none;">Resume</span>
+              </span>
             </a>
           </div>
           <a class="layout-footer__top" href="#top">BACK TO TOP ↑</a>
