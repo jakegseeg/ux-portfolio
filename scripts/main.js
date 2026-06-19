@@ -436,30 +436,99 @@
     var root = document.querySelector("[data-before-after]");
     if (!root) return;
 
-    var viewport = root.querySelector(".clubability-compare__viewport");
+    var container = root.querySelector(".clubability-compare");
     var clip = root.querySelector(".clubability-compare__clip");
-    var beforeFrame = root.querySelector(".clubability-compare__iframe--before");
+    var divider = root.querySelector(".clubability-compare__divider");
+    var handle = root.querySelector(".clubability-compare__handle");
+    var redesignedImg = clip ? clip.querySelector("img") : null;
     var range = root.querySelector(".clubability-compare__range");
-    if (!viewport || !clip || !beforeFrame || !range) return;
+    if (!container || !clip || !divider || !handle || !redesignedImg || !range) return;
 
-    function syncBeforeWidth() {
-      var w = viewport.offsetWidth;
+    var redesignLabels = Array.from(container.querySelectorAll("span")).filter(function (el) {
+      return el.textContent.trim() === "Redesign";
+    });
+    var originalLabels = Array.from(container.querySelectorAll("span")).filter(function (el) {
+      return el.textContent.trim() === "Original";
+    });
+
+    function syncRedesignedSize() {
+      var w = container.offsetWidth;
+      var h = container.offsetHeight;
       if (w) {
-        beforeFrame.style.width = w + "px";
+        redesignedImg.style.width = w + "px";
+      }
+      if (h) {
+        redesignedImg.style.height = h + "px";
       }
     }
 
-    function updateClip() {
-      clip.style.width = Number(range.value) + "%";
+    function setPosition(percent) {
+      var value = Math.max(0, Math.min(100, percent));
+      clip.style.width = value + "%";
+      divider.style.left = value + "%";
+      range.value = String(Math.round(value));
+      updateLabelVisibility(Math.round(value));
     }
 
-    syncBeforeWidth();
-    updateClip();
-    range.addEventListener("input", updateClip);
-    window.addEventListener("resize", syncBeforeWidth);
+    function updateLabelVisibility(value) {
+      var showRedesign = value !== 0;
+      var showOriginal = value !== 100;
+
+      redesignLabels.forEach(function (el) {
+        el.style.opacity = showRedesign ? "1" : "0";
+      });
+      originalLabels.forEach(function (el) {
+        el.style.opacity = showOriginal ? "1" : "0";
+      });
+    }
+
+    function positionFromClientX(clientX) {
+      var rect = container.getBoundingClientRect();
+      if (!rect.width) return;
+      setPosition(((clientX - rect.left) / rect.width) * 100);
+    }
+
+    function onPointerMove(event) {
+      positionFromClientX(event.clientX);
+    }
+
+    function onPointerEnd() {
+      document.removeEventListener("mousemove", onPointerMove);
+      document.removeEventListener("mouseup", onPointerEnd);
+      document.removeEventListener("touchmove", onTouchMove);
+      document.removeEventListener("touchend", onPointerEnd);
+      document.removeEventListener("touchcancel", onPointerEnd);
+    }
+
+    function onTouchMove(event) {
+      if (!event.touches.length) return;
+      event.preventDefault();
+      positionFromClientX(event.touches[0].clientX);
+    }
+
+    function startDrag(event) {
+      event.preventDefault();
+      if (event.type === "mousedown") {
+        document.addEventListener("mousemove", onPointerMove);
+        document.addEventListener("mouseup", onPointerEnd);
+      } else {
+        document.addEventListener("touchmove", onTouchMove, { passive: false });
+        document.addEventListener("touchend", onPointerEnd);
+        document.addEventListener("touchcancel", onPointerEnd);
+      }
+    }
+
+    syncRedesignedSize();
+    setPosition(Number(range.value));
+    range.addEventListener("input", function () {
+      setPosition(Number(range.value));
+    });
+    handle.addEventListener("mousedown", startDrag);
+    handle.addEventListener("touchstart", startDrag, { passive: false });
+    window.addEventListener("resize", syncRedesignedSize);
     if (window.ResizeObserver) {
-      var ro = new ResizeObserver(syncBeforeWidth);
-      ro.observe(viewport);
+      var ro = new ResizeObserver(syncRedesignedSize);
+      ro.observe(container);
     }
   }
 

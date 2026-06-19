@@ -153,37 +153,63 @@
             Compare the original site with the redesigned direction. Drag the slider or use
             the control to explore both.
           </p>
-          <div
-            class="clubability-compare"
-            data-before-after
-            aria-label="Before and after website comparison"
-          >
-            <div class="clubability-compare__viewport">
-              <iframe
-                class="clubability-compare__iframe clubability-compare__iframe--after"
-                title="Club Ability redesigned site (PDF)"
-                src="../assets/images/clubability-case/redesigned.pdf#page=1&amp;view=FitH"
-                loading="lazy"
-              ></iframe>
-              <div class="clubability-compare__clip">
-                <iframe
-                  class="clubability-compare__iframe clubability-compare__iframe--before"
-                  title="Club Ability original site (PDF)"
-                  src="../assets/images/clubability-case/original.pdf#page=1&amp;view=FitH"
-                  loading="lazy"
-                ></iframe>
+          <div data-before-after aria-label="Before and after website comparison">
+            <div
+              class="clubability-compare"
+              style="position: relative; width: 100%; overflow: hidden; border-radius: var(--radius-lg); user-select: none;"
+            >
+              <img
+                src="../assets/images/clubability-case/original.png"
+                alt="Club Ability original site"
+                style="display: block; width: 100%; height: auto;"
+              />
+              <div
+                class="clubability-compare__clip"
+                style="position: absolute; inset: 0; overflow: hidden; width: 50%;"
+              >
+                <img
+                  src="../assets/images/clubability-case/redesigned.png"
+                  alt="Club Ability redesigned site"
+                  style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: left top;"
+                />
               </div>
-            </div>
-            <div class="clubability-compare__labels">
-              <span class="clubability-compare__label">Redesigned</span>
-              <span class="clubability-compare__label">Original</span>
+              <div
+                class="clubability-compare__divider"
+                style="position: absolute; top: 0; bottom: 0; width: 2px; background: var(--accent-club); left: 50%; transform: translateX(-50%); pointer-events: none;"
+              >
+                <span
+                  class="clubability-compare__handle"
+                  style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 36px; height: 36px; border-radius: 50%; background: var(--accent-club); box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12), 0 4px 14px rgba(0, 0, 0, 0.18); pointer-events: auto; cursor: ew-resize;"
+                  aria-hidden="true"
+                ></span>
+              </div>
+              <span
+                style="position: absolute; top: var(--space-sm); left: var(--space-sm); font-size: var(--text-xs); color: #fff; background: rgba(0,0,0,0.45); padding: 3px 10px; border-radius: var(--radius-pill); pointer-events: none; transition: opacity var(--transition-base);"
+              >
+                Redesign
+              </span>
+              <span
+                style="position: absolute; top: var(--space-sm); right: var(--space-sm); font-size: var(--text-xs); color: #fff; background: rgba(0,0,0,0.45); padding: 3px 10px; border-radius: var(--radius-pill); pointer-events: none; transition: opacity var(--transition-base);"
+              >
+                Original
+              </span>
+              <span
+                style="position: absolute; bottom: var(--space-sm); left: var(--space-sm); font-size: var(--text-xs); color: #fff; background: rgba(0,0,0,0.45); padding: 3px 10px; border-radius: var(--radius-pill); pointer-events: none; transition: opacity var(--transition-base);"
+              >
+                Redesign
+              </span>
+              <span
+                style="position: absolute; bottom: var(--space-sm); right: var(--space-sm); font-size: var(--text-xs); color: #fff; background: rgba(0,0,0,0.45); padding: 3px 10px; border-radius: var(--radius-pill); pointer-events: none; transition: opacity var(--transition-base);"
+              >
+                Original
+              </span>
             </div>
             <input
               class="clubability-compare__range"
               type="range"
               min="0"
               max="100"
-              value="0"
+              value="50"
               aria-label="Slide to compare original and redesigned site"
             />
           </div>
