@@ -28,6 +28,27 @@
   font-weight: var(--weight-medium);
 }
 
+@media (max-width: 700px) {
+  .layout-nav {
+    gap: var(--space-md);
+    padding: var(--space-md);
+  }
+
+  .layout-nav__links {
+    gap: var(--space-md);
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .layout-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+}
+
 main > section:first-of-type:not(.layout-hero) {
   padding-top: var(--space-xl);
 }
@@ -149,6 +170,57 @@ main > section:first-of-type:not(.layout-hero) {
 @media (max-width: 768px) {
   .layout-works {
     padding: var(--space-2xl) var(--space-lg);
+  }
+}
+
+@media (max-width: 640px) {
+  .layout-works {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .layout-works__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .layout-hero {
+    min-height: 100svh;
+    max-height: none;
+    padding-inline: var(--space-md);
+  }
+
+  .layout-hero__content {
+    padding-inline: var(--space-sm);
+  }
+
+  .layout-hero__title {
+    font-size: clamp(2rem, 10vw, var(--text-2xl));
+    text-align: center;
+  }
+
+  .layout-hero__subtitle {
+    max-width: 32ch;
+  }
+
+  .layout-philosophy {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .layout-philosophy__skills {
+    line-height: var(--leading-normal);
+  }
+
+  .layout-footer {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .layout-footer__inner,
+  .layout-footer__right {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .layout-footer__right {
+    gap: var(--space-md);
   }
 }
 
@@ -1334,6 +1406,15 @@ main > section:first-of-type:not(.layout-hero) {
 }
 
 @media (max-width: 640px) {
+  .layout-case-study-main--aol {
+    padding: calc(var(--space-2xl) + var(--space-lg)) var(--space-md) var(--space-xl);
+  }
+
+  .aol-case-nav {
+    top: 52px;
+    margin-bottom: var(--space-lg);
+  }
+
   .aol-case-study__grid {
     grid-template-columns: 1fr;
   }
@@ -1347,5 +1428,35 @@ main > section:first-of-type:not(.layout-hero) {
   .aol-case-study__list {
     font-size: 1rem;
     line-height: 1.45;
+  }
+
+  .case-study-image-pair {
+    flex-direction: column !important;
+    gap: var(--space-md) !important;
+  }
+
+  .case-study-image-pair > figure {
+    width: 100% !important;
+  }
+
+  .clubability-meta {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-md);
+    text-align: left;
+  }
+
+  .clubability-slideshow__arrow {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 360px) {
+  .layout-case-study-main--aol {
+    padding-top: calc(var(--space-2xl) + var(--space-xl));
+  }
+
+  .aol-case-nav {
+    top: 76px;
   }
 }

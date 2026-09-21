@@ -8,6 +8,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -18,6 +19,7 @@ body {
   color: var(--color-text-primary);
   background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
 .hero-intro {
