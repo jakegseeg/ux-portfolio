@@ -45,6 +45,36 @@
       .layout-footer__icons a:hover span[style*='opacity'] {
         opacity: 1 !important;
       }
+
+      @media (hover: hover) and (pointer: fine) {
+        body#top .layout-nav__brand:hover,
+        body#top .layout-nav__link:hover,
+        body#top .layout-hero__title:hover .layout-hero__title-text,
+        body#top .layout-hero__subtitle:hover .layout-hero__subtitle-text,
+        body#top .layout-hero__scroll:hover,
+        body#top .layout-works__title:hover,
+        body#top .layout-works__subtitle:hover,
+        body#top .card-name:hover,
+        body#top .card-tag:hover,
+        body#top .layout-philosophy__title:hover,
+        body#top .layout-philosophy__body:hover,
+        body#top .layout-philosophy__skills:hover,
+        body#top .layout-footer__title:hover,
+        body#top .layout-footer__subtitle:hover,
+        body#top .layout-footer__icons a:hover,
+        body#top .layout-footer__top:hover {
+          background-image: none;
+          animation: none;
+          color: inherit;
+          -webkit-text-fill-color: currentColor;
+          background-clip: border-box;
+          -webkit-background-clip: border-box;
+        }
+
+        body#top .layout-footer__icons a:hover img {
+          opacity: 1;
+        }
+      }
     </style>
   </head>
   <body id="top">
